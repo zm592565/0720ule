@@ -1,0 +1,150 @@
+{include file="layout/header.html"}
+<body style="min-height:auto;">
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 资讯管理 <span class="c-gray en">&gt;</span> 添加资讯<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+<div class="page-container">
+<form action="{U('Net/update')}" method="post" class="form form-horizontal" id="add_news">
+		<input type="hidden" name="uploadurl" value="{U('Common/upload')}">
+		<input type="hidden" name="id" value="{$rs['id']}">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">所在国家：</label>
+			<div class="formControls col-xs-8 col-sm-2">
+				<input type="text" class="input-text" value="{$rs['nation']}" name="nation">
+			</div>
+			
+		</div>
+
+		
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">中文网点名称：</label>
+			<div class="formControls col-xs-8 col-sm-6">
+				<input type="text" class="input-text" value="{$rs['company_cn']}" name="company_cn">
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">英文网点名称：</label>
+			<div class="formControls col-xs-8 col-sm-6">
+				<input type="text" class="input-text" value="{$rs['company_en']}" name="company_en">
+			</div>
+		</div>
+		
+		
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">所在城市中文名：</label>
+			<div class="formControls col-xs-8 col-sm-2">
+				<input type="text" class="input-text" value="{$rs['city_cn']}" name="city_cn">
+			</div>
+			
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">所在城市英文名：</label>
+			<div class="formControls col-xs-8 col-sm-2">
+				<input type="text" class="input-text" value="{$rs['city_en']}" name="city_en">
+			</div>
+			
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">网点地址中文：</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="text" class="input-text" value="{$rs['address_cn']}" name="address_cn">
+			</div>
+			
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">网点地址英文：</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="text" class="input-text" value="{$rs['address_en']}" name="address_en">
+			</div>
+			
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">负责人：</label>
+			<div class="formControls col-xs-8 col-sm-2">
+				<input type="text" class="input-text" value="{$rs['charge']}" name="charge">
+			</div>
+			
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">客服经理：</label>
+			<div class="formControls col-xs-8 col-sm-2">
+				<input type="text" class="input-text" value="{$rs['manager']}" name="manager">
+			</div>
+			
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">客服电话：</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="text" class="input-text" value="{$rs['tel']}" name="tel">
+			</div>
+		</div>
+
+
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">网点简介：</label>
+			<div class="formControls col-xs-8 col-sm-7">
+				<textarea name="net_info" id="textarea" class="textarea"  placeholder="网点简介...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,200)">{$rs['net_info']}</textarea>
+				<p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+			</div>
+		</div>
+		
+		
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>网点图上传：</label>
+			<div class="formControls col-xs-8 col-sm-7" id="up_box">
+				  <p><a href="javascript:void();" id="upload" class="btn btn-primary radius">浏览图片</a></p>
+			</div>
+			
+		</div>
+		
+		
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">是否显示：</label>
+			<div class="formControls col-xs-8 col-sm-3 skin-minimal">
+				<input type="checkbox" onclick="check_box('is_show');" {if $rs['is_show'] }checked="checked"{/if}   id="is_show" style="margin-top:7px">
+			</div>
+			<input type="hidden" name="is_show" value="{$rs['is_show']}">
+		</div>
+
+		
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button class="btn btn-primary radius" type="submit" id="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
+				<a class="btn btn-default radius" href="{U('Net/index')}" >&nbsp;&nbsp;返回列表&nbsp;&nbsp;</a>
+			</div>
+		</div>
+	</form>
+	</div>
+
+	{include file="layout/commonfooterjs.html"}	
+	<script type="text/javascript" src="{$smarty.const.ADMIN_PATH}js/upload.js"></script>
+	<script type="text/javascript">		
+
+		//checkbox的方法
+		function check_box(id){
+			var checkid="#"+id;  
+			if($(checkid).is(":checked")){
+				$('input[name="is_show"]').val('1');
+		    }else{  
+		    	$('input[name="is_show"]').val('0');
+		    }  
+
+		}
+
+		function product_close(){
+			var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+			parent.layer.close(index); //再执行关闭 
+		}
+
+
+	</script>
+	
+	</body>
+</html>

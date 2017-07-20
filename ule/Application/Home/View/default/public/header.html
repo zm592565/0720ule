@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="renderer" content="webkit">
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta name="Keywords" content="{$smarty.const.WEB_KEYWORD}" />
+		<meta name="Description" content="{$smarty.const.WEB_DESCRIPTION}" />
+		<title>{$smarty.const.WEB_SITE}</title>
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="{$smarty.const.HOME_LIB_PATH}html5.js"></script>
+		<link href="{$smarty.const.HOME_CSS_PATH}H-ui/H-ui.ie.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="{$smarty.const.HOME_LIB_PATH}respond.min.js"></script>
+		<script type="text/javascript" src="{$smarty.const.HOME_LIB_PATH}PIE_IE678.js"></script>
+		<![endif]-->
+		<script type="text/javascript" src="{$smarty.const.COMMON_JS_PATH}jquery-1.11.2.min.js" ></script>
+		
+		{$lib}
+		{$js}
+		{$css}
+		<!--[if IE 6]>
+		<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+		<script>DD_belatedPNG.fix('*');</script>
+		<![endif]-->
+		<link rel="stylesheet" type="text/css" href="{$smarty.const.HOME_CSS_PATH}H-ui/H-ui.min.css" />
+	</head>
+	<body>
+		<div id="top">
+			<div class="header_top_box">
+				欢迎来到悠乐地接助游平台(u-le.net)，悠乐地接QQ群：19901687。
+				<ul>
+				{if $hasLogin}
+					<li><a href="{U('Home/Login/index')}">
+					{if session('username') }{session('username')}{else}{session('useremail')}{/if}</a></li>
+					<li><a href="#">我的悠乐</a></li>
+					<li><a href="{U('Home/Login/logoutUser')}">安全退出</a></li>
+				{else}
+					<li><a href="{U('Home/Login/index')}">登录</a></li>
+					<li><a href="{U('Home/Login/reg')}">注册</a></li>
+					<li><a href="#">我的悠乐</a></li>
+				{/if}
+					<li><a href="{U('Home/Help/index')}">帮助</a></li>
+				
+				</ul>
+			</div>
+		</div>
+		<div id="header">
+			<div class="header_top_box nav">
+				<a class="logo" href="{U('Home/Index/index')}"></a>
+				<div class="menu">
+					<a href="{U('Home/Index/index')}">首页</a>
+					<a href="#">地接导游</a>
+					<a target="_blank" href="{U('Home/Line/index')}">地接线路</a>
+					<a href="#">晒行程</a>
+					<a target="_blank" href="{U('Home/Ask/index')}">悠乐帮</a>
+				</div>
+				<a class="btn_write f-16" href="{if $hasLogin}{U('Home/Infosend/index')}{else}{U('Login/index')}{/if}">{$send_text}</a>
+			</div>
+		</div>

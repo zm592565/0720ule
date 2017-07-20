@@ -1,0 +1,171 @@
+@charset "utf-8";
+/*
+ * 项目名称：悠乐地接 信息发布
+ * 开发时间：2016.11.27
+ * 开发人：344822559@qq.com
+ * */
+
+.send_banner_bj{
+	background: url(../img/send_info_bj.png) no-repeat center top;
+}
+
+
+.search_line{
+	width: 800px;
+	height: 50px;
+	border: 1px solid #ccc;
+	background: white;
+}
+
+.order_line{
+	float: left;
+	padding-top: 15px;
+}
+.order_line li{
+	float: left;
+	font-size: 14px;
+}
+.order_line li a{
+	color: #999;
+}
+.order_line li a.active{
+	color: #46ccbd;
+}
+
+.all_line{
+	padding-top: 15px;
+	font-size: 14px;
+	color: #999;
+}
+.new_line ul{
+	width: 100%;
+	height: 35px;
+	display: inline-block;
+	text-align: center;
+}
+.new_line ul li{
+	display: inline;
+	padding: 5px 10px;
+	font-size: 14px;
+	margin: 0px 5px;
+	cursor: pointer;
+}
+.new_line ul li.active{
+	background: #30c1b8;
+	color: white;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+.new_line dl{
+	width: 285px;
+	float: left;
+	overflow: hidden;
+	margin-right: 20px;
+	margin-top: 20px;
+}
+.new_line dl a:hover{
+	text-decoration: none;
+}
+.new_line dl:nth-child(4n){
+	margin-right: 0px;
+}
+.new_line dl dt{
+	position: relative;
+	height: 170px;
+}
+.new_line dl dt .line_map{
+	background: url(../img/icon/icon_map_newline.png) no-repeat left center;
+	line-height: 25px;
+	font-size: 14px;
+	padding-left: 20px;
+	color: white;
+	position: absolute;
+	top: 140px;
+	right: 10px;
+	z-index: 2;
+}
+.new_line dl dt .line_thumb{
+	width: 285px;
+	height: 170px;
+	background: #f5f5f5;
+	overflow: hidden;
+}
+.new_line dl dt .line_thumb img{	
+	z-index: 1;
+	display: block;
+	transition: all 0.6s;
+	-ms-transition: all 0.6s;
+	-moz-transition: all 0.6s;
+	-webkit-transition: all 0.6s;
+	margin: 0 auto;
+}
+.new_line dl dt .line_thumb img:hover{ 
+	overflow: hidden;
+    transform: scale(1.1);
+    -ms-transition: scale(1.1);
+	-moz-transition: scale(1.1);
+	-webkit-transition: scale(1.1);
+} 
+.new_line dl dt img.user{
+	position: absolute;
+	width: 43px;
+	height: 43px;
+	padding: 4px;
+	border-radius: 50%;
+	bottom: -25px;
+	z-index: 2;
+	left: 10px;
+	background: white;
+}
+.new_line dl dd{
+	border: 1px solid #eee;
+	background: white;
+	padding: 10px 10px;
+	padding-top: 30px;
+	padding-bottom: 0px;
+	border-top: none;
+	color: #333;
+	font-size: 16px;
+	line-height: 130%;
+	/*border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-right-radius: 5px;*/
+}
+
+.new_line dl dd div.hot_line_title{
+	min-height: 40px;
+}
+.new_line dl dd div.line_price{
+	text-align: right;
+	font-size: 12px;
+	line-height: 40px;
+	position: relative;
+	color: #9d9d9d;
+}
+.new_line dl dd div.line_price em{
+	font-style: normal;
+	font-size: 22px;
+	color: #f26c7c;
+	padding-right: 5px;
+}
+.new_line dl dd div.line_price .fly_time{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	padding-right: 23px;
+	background: url(../img/icon/icon_fly.jpg) no-repeat right center;
+	line-height: 40px;
+}
+
+
+
+.height_50{
+	height: 50px;
+}
+.height_40{
+	height: 40px;
+}

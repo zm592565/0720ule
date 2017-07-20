@@ -1,0 +1,126 @@
+{include file="layout/header.html"}
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统管理 <span class="c-gray en">&gt;</span> 添加来源<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+<div class="page-container">
+
+<form action="{U('From/add')}" method="post" class="form form-horizontal">
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>来源名称：</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="text" class="input-text" value="{$rs['name']}" name="name">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">英文名称：</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="text" class="input-text" value="{$rs['name_en']}"  name="name_en">
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">来源链接：</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="text" class="input-text" value="{$rs['link']}"  name="link">
+			</div>
+		</div>
+
+		
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">来源信息：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<textarea name="name_info" id="textarea" class="textarea"  placeholder="来源信息...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,200)">{$rs['name_info']}</textarea>
+				<p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+			</div>
+		</div>
+		
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button class="btn btn-primary radius" type="button" id="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
+				<a class="btn btn-default radius" href="{U('From/index')}">&nbsp;&nbsp;取消&nbsp;&nbsp;</a>
+			</div>
+		</div>
+	</form>
+	</div>
+
+	{include file="layout/commonfooterjs.html"}
+
+	<script type="text/javascript">
+	
+
+	$(function(){
+
+		$('#submit').click(function(){
+
+			var name=$("input[name='name']").val();
+			var name_en=$("input[name='name_en']").val();
+			var link=$("input[name='link']").val();
+			var name_info=$('#textarea').val();
+
+			var url="{U('From/add')}";
+			var returnUrl="{U('From/index')}";
+			if(name==''||link==''){
+				layer.alert('内容填写不完整,请补充填写!')
+				return false;
+			}
+
+
+			$.post(url,
+				{
+					name:name,
+					name_en:name_en,
+					link:link,
+					name_info:name_info
+				},
+			{literal}
+	          function(data){
+	         	console.log(data); //  2pm
+	         	if (data.state=="1") {
+
+					layer.confirm(data.message, {
+						  btn: ['继续添加','返回列表'] //按钮
+						}, function(){
+						  window.location.href=url;
+						}, function(){
+						   window.location.href=returnUrl;
+					});
+
+	         	}else{
+	         		
+	         		layer.confirm(data.message, {
+						  btn: ['继续添加','返回列表'] //按钮
+						}, function(){
+						  window.location.href=url;
+						}, function(){
+						   window.location.href=returnUrl;
+					});
+
+
+	         	}
+
+	        });
+
+	       
+
+		})
+
+		
+
+	})
+
+	//checkbox的方法
+	function check_box(id){
+		var checkid="#"+id;  
+		if($(checkid).is(":checked")){
+			$('input[name="is_menu"]').val('1');
+	    }else{  
+	    	$('input[name="is_menu"]').val('0');
+	    }  
+
+	}
+
+	{/literal}
+	</script>
+</body>
+</html

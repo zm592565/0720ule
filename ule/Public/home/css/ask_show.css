@@ -1,0 +1,162 @@
+@charset "utf-8";
+/*
+ * 项目名称：悠乐地接 悠乐幇
+ * 开发时间：2016.11.27
+ * 开发人：344822559@qq.com
+ * */
+.ask_show_box{
+	border: 1px solid #eee;
+	background: white;
+}
+.user_link{
+	clear: both;
+}
+.user_link a img{
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+}
+
+.cimmit_user_link{
+	clear: both;
+}
+.cimmit_user_link a img{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+}
+.tool_ask_show{
+	height: 31px;
+	margin-top: 5px;
+}
+.tool_ask_show .answer{
+	padding-left: 18px;
+	background: url(../img/icon/icon_talk.png) no-repeat left center;
+	background-size: 15px;
+	color: #777;
+	line-height: 31px;
+	float: left;
+}
+.tool_ask_show .answer a{
+	padding: 0px;
+	background: none;
+	margin: 0px;
+	padding:0px 3px;
+}
+.tool_ask_show .answer a:hover{
+	color: #46ccbd;
+}
+.tool_ask_show .read{
+	padding-left: 18px;
+	background: url(../img/icon/icon_eye.png) no-repeat left center;
+	background-size: 15px;
+	color: #777;
+	line-height: 31px;
+	float: left;
+	margin-left: 20px;
+}
+.tags_ask{
+	margin-top: 20px;
+}
+.tags_ask a{
+	background: #efefef;
+	border-radius: 15px;
+	border: 0px;
+	display: block;
+	float: left;
+	padding: 5px 8px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	color: #999;
+}
+.tags_ask a:hover{
+	background: #46ccbd;
+	text-decoration: none;
+	color: white;
+}
+.ask_cimmit{
+	padding-left: 60px;
+	position: relative;
+}
+.ask_cimmit .support{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 40px;
+	text-align: center;
+	background: #fff9f0 url(../img/icon/icon_mark.png) no-repeat 10px 10px;
+	background-size: 20px;
+	padding-top: 35px;
+	padding-bottom: 10px;
+	color: #f4a377;
+	font-size: 14px;
+	line-height: 16px;
+	font-family: "Microsoft Yahei","微软雅黑";
+}
+
+.add_ask{
+	height: 20px;
+	line-height: 20px;
+	background: url(../img/icon/icon_add_message.png) no-repeat left center;
+	background-size: auto 70%;
+	padding-left: 20px;
+	cursor: pointer;
+}
+.add_ask:hover{
+	color: #46ccbd;
+}
+.do_report{
+	height: 20px;
+	line-height: 20px;
+	background: url(../img/icon/icon_report.png) no-repeat left center;
+	background-size: auto 70%;
+	padding-left: 20px;
+	color: #999;
+	margin-right: 20px;
+	cursor: pointer;
+}
+.do_report:hover{
+	color: #46ccbd;
+}
+.ask_add_answer{
+	clear: both;
+	min-height: 36px;
+	margin-right: 20px;
+	background: #fafafa;
+	display: none;
+}
+.ask_add_answer textarea{
+	height: 30px;
+}
+.text_num{
+	line-height: 31px;
+	padding-top: 10px;
+}
+
+.answer_list{
+	position: relative;	
+	padding: 10px 0px;
+	padding-left: 60px;
+	min-height: 60px;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 20px;
+}
+.answer_list img.face{
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+	border-radius: 50%;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+.child_box{
+	padding: 0px;
+	margin: 0px;
+}

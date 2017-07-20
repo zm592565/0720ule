@@ -1,0 +1,122 @@
+{include file="layout/header.html"}
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 广告管理 <span class="c-gray en">&gt;</span> 添加广告位<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+<div class="page-container">
+
+<form action="{U('Class/updatebanner')}" method="post" class="form form-horizontal">
+		<input type="hidden" name="id" value="{$rs.id}">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>广告位名称：</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="text" class="input-text" value="{$rs['class_name']}" name="class_name">
+			</div>
+		</div>
+		
+		
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>广告位说明：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<textarea name="class_info" id="textarea" class="textarea"  placeholder="栏目介绍...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,200)">{$rs['class_info']}</textarea>
+				<p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">是否显示：</label>
+			<div class="formControls col-xs-8 col-sm-3 skin-minimal">
+				<input type="checkbox" onclick="check_box('check_menu');" id="check_menu" {if $rs['is_show']==1}checked="checked"{/if} style="margin-top:7px">
+			</div>
+			<input type="hidden" name="is_show" >
+		</div>
+		
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button class="btn btn-primary radius" type="button" id="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
+				<a class="btn btn-default radius" href="{U('Banner/bannerlist')}">&nbsp;&nbsp;取消&nbsp;&nbsp;</a>
+			</div>
+		</div>
+	</form>
+	</div>
+
+
+
+	{include file="layout/commonfooterjs.html"}
+
+	<script type="text/javascript">
+	
+
+	$(function(){
+
+		$('#submit').click(function(){
+			
+			var class_name=$('input[name="class_name"]').val();
+			var id=$('input[name="id"]').val();
+			var is_show=$('input[name="is_show"]').val();
+			var class_info=$('#textarea').val();
+			var url="{U('Banner/updatebanner')}";
+			var returnUrl="{U('Banner/bannerlist')}";
+			if(class_name==''||class_info==''){
+				layer.alert('内容填写不完整,请补充填写!')
+				return false;
+			}
+
+			$.post(url,
+				{	
+					id:id,
+					class_name:class_name,
+					class_info:class_info,
+					is_show:is_show,
+					class_info:class_info
+				},
+			{literal}
+	          function(data){
+	         	console.log(data); //  2pm
+	         	if (data.state=="1") {
+
+					layer.confirm(data.message, {
+						  btn: ['继续添加','返回列表'] //按钮
+						}, function(){
+						  window.location.href=url;
+						}, function(){
+						   window.location.href=returnUrl;
+					});
+
+	         	}else{
+	         		
+	         		layer.confirm(data.message, {
+						  btn: ['继续添加','返回列表'] //按钮
+						}, function(){
+						  window.location.href=url;
+						}, function(){
+						   window.location.href=returnUrl;
+					});
+
+
+	         	}
+
+	        });
+
+	       
+
+		})
+
+		
+
+	})
+
+	//checkbox的方法
+	function check_box(id){
+		var checkid="#"+id;  
+		if($(checkid).is(":checked")){
+			$('input[name="is_show"]').val('1');
+	    }else{  
+	    	$('input[name="is_show"]').val('0');
+	    }  
+
+	}
+
+	{/literal}
+	</script>
+</body>
+</html

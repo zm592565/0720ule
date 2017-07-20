@@ -1,0 +1,28 @@
+
+<script type="text/javascript">
+      PageUrl="{U('Home/Help/PageHelp')}";
+</script>
+<div class="content_box_1200 clearfix pb-20">
+      		<div class="help_menu">
+      			<p class="c-uleblue">{$slider_menu}</p>
+      			<ul>
+                        {if $menu }
+                              {foreach $menu as $value}
+
+                              <li name="{$value.url}" id="{$value.id}">{$value.class_name}</li> 
+
+                              {/foreach}
+                        {else}
+                             <li>暂无数据</li> 
+
+                        {/if}
+      			</ul>
+      		</div>
+      		<div class="help_content">
+      			<p>关于悠乐</p>
+      			<div class="content pt-20 pb-20 pl-20 pr-20" style="font-size: 14px;">
+      				
+      			</div>
+      		</div>
+      		
+      	</div>

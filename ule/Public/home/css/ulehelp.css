@@ -1,0 +1,327 @@
+@charset "utf-8";
+/*
+ * 项目名称：悠乐地接 悠乐幇
+ * 开发时间：2016.11.27
+ * 开发人：344822559@qq.com
+ * */
+.box_ulehelp{
+	/*box-shadow:0px -5px 3px -2px #36cfc6 inset;*/ 
+	background: #3edad1 url(../img/page_header_bj.jpg) no-repeat bottom center;
+	padding-top: 72px;
+	height: 118px;
+}
+.box_ulehelp .ask_sub{
+	width: 800px;
+	height: 45px;
+	margin: 0 auto;
+}
+.box_ulehelp .ask_sub input{
+	float: left;
+	width: 600px;
+	height: 45px;
+}
+.box_ulehelp .ask_sub button{
+	height: 45px;
+}
+.box_ulehelp .ask_sub a{
+	height: 45px;
+	line-height: 35px;
+}
+
+.ulehelp_box-gray{
+	background: #fafafa;
+	
+}
+
+
+.left_help{
+	float: left;
+	width: 820px;
+}
+.right_help{
+	float: right;
+	width: 340px;
+}
+
+.left_help ul{
+	display: block;
+	position: relative;
+	padding-right: 200px;
+}
+
+.left_help .nav_top{
+	display: block;
+	position: relative;
+	padding-right: 200px;
+	min-height: 35px;
+}
+
+.left_help ul li{
+	float: left;
+	font-size: 14px;
+	color: #666;
+	padding: 5px 10px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+.left_help ul li.active{
+	background: #fe8d4c;
+	color: white;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.post_send{
+	position: absolute;
+	right: 0px;
+	color: white;
+	line-height: 30px;
+	border-radius: 15px;
+	padding: 0 15px;
+	background: #47cdc5;
+	cursor: pointer;
+	text-decoration: none;
+}
+.post_send:hover{
+	color: white;
+	text-decoration: none;
+}
+.ule_box_left{
+	float: left;
+	width: 820px;
+	min-height: 450px;
+	display: none;
+}
+.ule_box_left_active{
+	display: block;
+}
+.ule_box_left dl{
+	position: relative;
+	width: 788px;
+	border: 1px solid #eeeeee;
+	background: white;
+	clear: both;
+	margin-top: 0px;
+	padding: 15px;
+	margin-bottom: 15px;
+}
+.ule_box_left dl:hover{
+	box-shadow: 3px 3px 5px rgba(200,200,200,0.2);
+}
+
+
+.ule_box_left dl:last-child{
+	margin-bottom: 0px;
+}
+.ule_box_left dl .face{
+	padding-left: 40px;
+	height: 32px;
+	line-height: 32px;
+	display: block;
+	position: relative;
+}
+.ule_box_left dl .face:hover{
+	text-decoration: none;
+}
+.ule_box_left dl .face img{
+	display: block;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #eee;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.ule_box_left dl .tool_box{
+	padding: 15px 0px 5px 0px;
+	clear: both;
+	min-height: 24px;
+	position: relative;
+}
+.ule_box_left dl .tool_box a{
+	background: #efefef;
+	border-radius: 15px;
+	border: 0px;
+	display: inline;
+	padding: 5px 8px;
+	margin-right: 5px;
+}
+.ule_box_left dl .tool_box a:hover{
+	background: #46ccbd;
+	text-decoration: none;
+	color: white;
+}
+
+.ule_box_left dl .tool_box .read_message_box{
+	position: absolute;
+	right: 0px;
+	top: 20px;
+	height: 25px;
+}
+
+.ule_box_left dl .tool_box .read_message_box .answer{
+	padding-left: 18px;
+	background: url(../img/icon/icon_talk.png) no-repeat left center;
+	background-size: 15px;
+	color: #777;
+	float: right;
+}
+.ule_box_left dl .tool_box .read_message_box .answer a{
+	padding: 0px;
+	background: none;
+	margin: 0px;
+	padding-right: 3px;
+}
+.ule_box_left dl .tool_box .read_message_box .answer a:hover{
+	color: #46ccbd;
+}
+
+.ule_box_left dl .tool_box .read_message_box .read{
+	padding-left: 18px;
+	background: url(../img/icon/icon_eye.png) no-repeat left center;
+	background-size: 15px;
+	color: #777;
+	float: right;
+	margin-right: 10px;
+}
+.ule_box_left dl .tool_box .read_message_box .read a{
+	padding: 0px;
+	background: none;
+	margin: 0px;
+	padding-right: 3px;
+}
+.ule_box_left dl .tool_box .read_message_box .read a:hover{
+	color: #46ccbd;
+}
+.text_Hm36{
+	overflow-y: hidden;
+}
+.ule_box_right{
+	position: relative;
+	width: 340px;
+}
+.ule_box_right .help_reg{
+	height: 184px;
+	padding: 40px;
+	background: url(../img/ule_help_reg_bj.jpg) no-repeat center;
+	background-size: 100% 100%;
+	color: white;
+	line-height: 28px;
+	font-size: 17px;
+}
+.ule_box_right .help_reg .join_btn{
+	height: 40px;
+	display: block;
+	width: 130px;
+	text-align: center;
+	line-height: 40px;
+	color: white;
+	border: 1px solid white;
+	background: rgba(255,255,255,0.1);
+}
+.ule_box_right .help_reg .join_btn:hover{
+	background: rgba(255,255,255,0.4);
+	text-decoration: none;
+}
+
+.posts{
+	padding-top: 20px;
+}
+.posts p{
+	border-left: 3px solid #f49359;
+	text-align: left;
+	height: 18px;
+	line-height: 18px;
+	padding-left: 8px;
+	position: relative;
+	color: #666;
+}
+.posts p a{
+	position: absolute;
+	right: 0px;
+	font-size: 12px;
+	background: #fe8d4c;
+	text-align: center;
+	border-radius: 3px;
+	padding: 2px 6px;
+	color: white;
+}
+.posts p a:hover{
+	text-decoration: none;
+	background: #ff9f68;
+}
+.posts dl{
+	margin: 0px;
+	float: none;
+	width: auto;
+	height: 60px;
+	display: block;
+	position: relative;
+	padding-left: 40px;
+}
+.posts dl dt{
+	width: 30px;
+	height: 30px;
+	top: 15px;
+	left: 0px;
+	text-align: center;
+	color: white;
+	font-size: 14px;
+	font-family: "helvetica";
+	position: absolute;
+	background: url(../img/icon/icon_04.png) no-repeat top center;
+	background-size: auto 100%;
+}
+.posts dl dt.one{
+	background: url(../img/icon/icon_01.png) no-repeat top center;
+	background-size: auto 100%;
+}
+.posts dl dt.two{
+	background: url(../img/icon/icon_02.png) no-repeat top center;
+	background-size: auto 100%;
+}
+.posts dl dt.three{
+	background: url(../img/icon/icon_03.png) no-repeat top center;
+	background-size: auto 100%;
+}
+
+.posts dl dd{
+	border: none;
+    background: none;
+    padding: 0px;
+    color: #333;
+    position: relative;
+}
+.posts dl dd img{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	float: left;
+	display: block;
+	margin-top: 10px;
+}
+.posts dl dd span{
+	font-size: 12px;
+	height: 20px;
+	line-height: 20px;
+	position: absolute;
+	right: 0px;
+	top: 20px;
+	color: #666;
+}
+.posts dl dd span strong{
+	padding-right: 3px;
+}
+.posts dl dd .member_name{
+	line-height: 60px;
+	padding-left: 15px;
+	font-size: 14px;
+	text-align: left;
+}

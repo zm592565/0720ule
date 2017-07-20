@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* 你自己的样式 */
+
+.wraning_box{
+	background: #fc8675;
+}
+
+#uploader{
+	background: #f5f5f5;
+}
+.bg_white{
+	background: white;
+}

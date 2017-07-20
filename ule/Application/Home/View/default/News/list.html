@@ -1,0 +1,51 @@
+	<div class="list_banner">
+			<div class="list_banner_p content">
+				<p>{$page_big}</p>
+				<div class="bread">{$page_big} > {$bread['class_name']}</div>
+			</div>
+		</div>
+		
+		<div class="content clearfix">
+			<div class="list_nav">
+				<div class="nav_title">快捷导航</div>
+				<ul class="clearfix">
+					{if $qucik}
+						{foreach $qucik as $value}
+							<li><a href="{$value.url}">{$value.class_name}</a></li>
+						{/foreach}
+
+					{else}
+						<li>暂无数据</li>
+					{/if}
+					
+				</ul>
+			</div>
+			
+			<ul class="list_text">
+
+			{if $newslist}
+
+				{foreach $newslist as $value}
+
+					<li>
+					<p class="title">
+						<a target="_blank" href="{$value.url}">{$value.title|truncate:42:"...":true}</a>
+						<b>发布日期：{date('Y/m/d',$value['time'])}</b>
+					</p>
+					<div class="abstract">{$value.digest|truncate:140:"...":true} <a target="_blank" href="{$value.url}">[查看详情]</a>
+					</div>
+				</li>
+
+				{/foreach}
+
+			{else}
+				<li style="text-align: center;">暂无新闻</li>
+			{/if}
+
+				
+			<div class="pagination clearfix" style="margin-top:20px">{$page}</div>
+			</ul>	
+		</div>
+
+
+		

@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+/*H-ui的标签样式*/
+.Hui-tags{border:solid 1px #dedede; padding:0 10px}
+	.Hui-tags-editor{position:relative; padding:0px 0 0px 20px;height: 30px;overflow: hidden;}
+	.Hui-tags-editor .Hui-tags-icon{position:absolute; left:0; top:7px; font-size:14px; color:#666}
+		.Hui-tags-token{color:#aaa; float:left; font-size:12px; height:30px; line-height:30px; margin-right:8px; padding:0 1px; white-space:nowrap; cursor:pointer}
+		.Hui-tags-token:before{content:"#"}
+		.Hui-tags-token:hover{text-decoration:line-through}
+		.Hui-tags-iptwrap{position:relative; float:left}
+			.Hui-tags-input{position:relative;height:30px;min-width:50px; border:0 none; vertical-align:top;line-height:20px; color:#333;z-index:2;background: url(../images/empty.png) repeat scroll 0 0; display:inline-block; max-width:100px;}
+			.Hui-tags-label{position:absolute; top:0; left:2px; width:200px; height:30px; line-height:30px; font-size:12px; overflow:hidden; z-index:1; color:#ccc}
+		.Hui-tags-list{padding:0 0 10px 0; display:none}
+	.Hui-notag{font-size:12px}
+	.Hui-tags-has span{cursor:pointer; font-size:12px; white-space:nowrap; margin-right:10px}

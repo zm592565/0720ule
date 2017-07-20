@@ -1,0 +1,54 @@
+{include file="layout/header.html"}
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统管理 <span class="c-gray en">&gt;</span> 来源列表<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+
+<div class="page-container">
+
+	<form action="{U('Class/command')}" method="post">
+	<div class="cl pd-5 bk-gray" style="border-bottom:none"><a href="{U('From/add')}" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加来源</a></span> <span class="r">共有数据：<strong>{$count}</strong> 条</span> </div>
+	<table class="table table-border table-bordered table-bg table-hover">
+		<thead>
+			<tr>
+				<th scope="col" colspan="11">分类列表</th>
+			</tr>
+			<tr class="text-c">
+				<th>ID</th>
+				<th>来源名</th>
+				<th>英文名</th>
+				<th>链接</th>
+				<th>来源信息</th>
+				<th>添加时间</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		{if $result}
+		{foreach $result as $value}
+			<tr class="text-c">
+				<td>{$value.id}</td>
+				<td>{$value.name}</td>
+				<td>{$value.name_en}</td>
+				<td>{$value.link}</td>
+				<td>{mb_substr($value['name_info'],0,10)}</td>
+				<td>{$value.date}</td>
+				<td class="td-manage">
+				<a title="编辑" href="{U('From/update')}?id={$value.id}" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> 
+				<a title="删除" href="{U('From/delone')}?id={$value.id}" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+				</td>
+			</tr>		
+		{/foreach}
+		{else}
+			<tr class="text-c">
+			<td colspan="11">暂无数据...</td>
+			</tr>
+		{/if}
+		</tbody>
+	</table>
+	</form>
+	<div class="pagination" style="margin-top:20px">{$page}</div>
+</div>
+
+{include file="layout/commonfooterjs.html"}
+</body>
+</html

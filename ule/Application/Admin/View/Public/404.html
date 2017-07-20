@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+  <title>{$error}</title>
+  <link href="{$smarty.const.COMMON_CSS_PATH}style.css" rel="stylesheet">
+  <link href="{$smarty.const.COMMON_CSS_PATH}style-responsive.css" rel="stylesheet">
+</head>
+
+<body class="error-page" style="text-align: center;">
+
+<section>
+    <div class="container ">
+
+        <section class="error-wrapper text-center">
+            <h1><img alt="" src="{$smarty.const.COMMON_IMG_PATH}404-error.png"></h1>
+            <h2>{$error}</h2>
+            <h3>We Couldn’t Find This Page</h3>
+           <!--  <p>错误：<?php echo $e['file'] ?><br/>
+            	出错行数：<?php echo $e['line'] ?><br/>
+            		<?php echo $e['message'] ?>异常信息<br/>
+            			<?php echo $e['trace'] ?>异常的详细Trace信息
+            </p> -->
+            <p style="font-family: 'microsoft yahei';"><b id="wait">{$waitSecond}</b>秒后跳转</p>         
+            <a id="href" class="back-btn" href="{$jumpUrl}">立刻跳转</a>
+        </section>
+
+    </div>
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="{$smarty.const.COMMON_JS_PATH}jquery-1.10.2.min.js"></script>
+<script src="{$smarty.const.COMMON_JS_PATH}jquery-migrate-1.2.1.min.js"></script>
+<script src="{$smarty.const.COMMON_JS_PATH}bootstrap.min.js"></script>
+<script src="{$smarty.const.COMMON_JS_PATH}modernizr.min.js"></script>
+<!--common scripts for all pages-->
+<!--<script src="js/scripts.js"></script>-->
+<script type="text/javascript">
+(function(){
+var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+var interval = setInterval(function(){
+  var time = --wait.innerHTML;
+  if(time <= 0) {
+    location.href = href;
+    clearInterval(interval);
+  };
+}, 1000);
+})();
+</script>
+</body>
+</html>

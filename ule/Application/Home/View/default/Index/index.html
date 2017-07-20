@@ -1,0 +1,457 @@
+<script type="text/javascript">
+	var add_focus="{U('Home/Index/add_focus')}";
+</script>
+<div class="banner">
+			<!-- Swiper -->
+		    <div class="swiper-container">
+		        <div class="swiper-wrapper">
+		            <div class="swiper-slide"><img src="{$smarty.const.HOME_IMG_PATH}banner.jpg"/></div>
+		            <div class="swiper-slide"><img src="{$smarty.const.HOME_IMG_PATH}banner.jpg"/></div>
+		            <div class="swiper-slide"><img src="{$smarty.const.HOME_IMG_PATH}banner.jpg"/></div>
+		        </div>
+		        <!-- Add Pagination -->
+		        <div class="swiper-pagination"></div>
+		        <div class="swiper-button-prev"></div>
+    			<div class="swiper-button-next"></div>
+		    </div>
+		    <!-- Initialize Swiper -->
+		    <script>
+		    var swiper = new Swiper('.swiper-container', {
+		        pagination: '.swiper-pagination',
+		        nextButton: '.swiper-button-next',
+		        prevButton: '.swiper-button-prev',
+		        paginationClickable: true,
+		        spaceBetween: 30,
+		        centeredSlides: true,
+		        autoplay: 2500,
+		        autoplayDisableOnInteraction: false
+		       
+		    });
+		    </script>
+		</div>
+		<div class="new_line clearfix">   
+			<p class="f-26">最热地接线路</p>
+			<ul class="clearfix">
+			{if $country}
+
+			{foreach $country as $key=>$value}
+			{if $key==0}
+			<li class="active">{$value.name}</li>
+			{else}
+			<li>{$value.name}</li>
+			{/if}
+			
+			{/foreach}
+			{/if}
+
+			</ul>
+
+			{if $newlines}
+				
+				{foreach $newlines as $key=>$value}
+					
+					
+					
+					<div class="top_box hui-fadein {if $key==0}top_box_active {/if}clearfix">
+
+					{if $value}
+
+					{foreach $value as $line}
+						<dl>
+						<a href='{U("Home/Line/showLine?id={$line.id}")}'>
+							<dt>
+								<div class="line_thumb">
+									<img src="{$line.thumb}" />
+								</div>
+								<div class="line_map">
+								{if $line.cityname}
+								{$line.cityname}
+								{elseif $line.provincename}
+								{$line.provincename}
+								{else}
+								{$line.countryname}
+								{/if}
+								</div>
+								<img class="user" src="{if $face=json_decode($line['member_face'],true)}{$face['small']}{else}
+								{$smarty.const.HOME_IMG_PATH}default.jpg{/if}" />
+							</dt>
+							<dd>
+								<div class="hot_line_title">{msubstr($line.title,0,30,'utf-8',true)}</div>
+								<div class="line_price">
+									<em>{$line.price_last}</em>元起
+									<div class="fly_time">
+									{date('Y/m/d',$line['start_time'])} 出发</div>
+								</div>
+							</dd>
+							</a>
+						</dl>
+					{/foreach}
+
+					{/if}
+
+						
+
+					</div>
+
+				{/foreach}
+
+			{/if}
+			
+			<div class="chose_line clearfix">
+			{if $country}
+
+			{foreach $country as $key=>$value}
+				<li{if $key==0} class="active"{/if}></li>
+			{/foreach}
+			{/if}
+			</div>
+			<a class="more f-18" href="{U('Line/index')}">更多地接线路</a>
+			
+		</div>
+		<!--
+        	作者：344822559@qq.com
+        	时间：2016-12-22
+        	描述：地接线路结束
+        -->
+		
+		<div class="guide_box">
+			<p class="guide_title">发现·地接导游</p>
+			<div class="content_box">
+				<div class="content_guide clearfix">
+
+				{if $member_new}
+
+				{foreach $member_new as $value}
+
+					<dl>
+						<dt><a href='{U("Home/Usercenter/index?id={$value.id}")}'><img src="{$value.face}"/></a></dt>
+						<dd>
+							
+							{if $value['hasfocus']}
+							<a href="javascript:;" title="已关注此会员" name="{$value.id}" class="btn radius size-MINI btn_foucs c-999 disabled" onclick="return false;">已关注</a>
+							{else}
+							<a href="javascript:;" title="点击关注此会员" name="{$value.id}" class="btn radius size-MINI btn_foucs c-999">关注</a>
+							{/if}
+
+
+							<a href='{U("Home/Usercenter/index?id={$value.id}")}' class="f-16 c-666" style="display: block;margin-right: 70px;">
+							{if $value['name']}{$value.name}{elseif $value['ename']}{$value.ename}
+							{else $value['email']}{$value.email}{/if}
+							</a>
+							<p class="l-18" style="color: #999; margin-bottom: 0px;">已有粉丝<cite class="c-warning pl-5 pr-5">{$value.fans}</cite>个</p>
+							<div class="f-13 c-777 mt-5" style="height: 32px;overflow-y: hidden; line-height: 16px;">自我描述：{msubstr($value.about,0,25)}</div>
+						</dd>
+					</dl>
+				{/foreach}
+				{/if}
+
+					
+					<div class="guide_reg">
+						<p class="f-18 l-30 c-666" style="margin-bottom: 0px;">悠乐让自由行更自由！</p>
+						<p class="f-14 l20 c-999 mb-25">注册悠乐账号，让想找的地接信息拥抱你。</p>
+						<a href="{U('Home/Login/reg')}" class="btn_index_reg clearfix">立即注册</a>
+						<p class="f-14 c-666 text-c" style="margin-bottom: 0px;">已有悠乐账号？<a href="{U('Home/Login/index')}" class="c-uleblue"><strong>登录</strong></a></p>
+						<p class="mt-5 c-999 text-c">或使用<a href="#" class="pl-5"><img src="{$smarty.const.HOME_IMG_PATH}qq_login_icon.jpg"/></a></p>
+					</div>
+					<a href="#" class="more f-18">更多地接导游</a>
+				</div>
+				
+			</div>
+		</div>
+		<!--
+        	作者：344822559@qq.com
+        	时间：2016-12-22
+        	描述：地接导游结束
+        -->
+		
+		<div class="new_line clearfix">
+			<p class="f-26">热门游记</p>
+			<ul class="clearfix">
+				<li class="active">泰国</li>
+				<li>日本</li>
+				<li>澳大利亚</li>
+				<li>美国</li>
+				<li>韩国</li>
+				<li>加拿大</li>
+			</ul>
+			<div class="content_box clearfix">
+				<a href="#" class="hot_note">
+					<img src="{$smarty.const.HOME_IMG_PATH}pic.jpg" />
+					<div class="hot_city">丽江</div>
+					<div class="member_box">
+						<div class="member_name">zm592565</div>
+						<div class="member_read">1096</div>
+						<div class="member_message">1096</div>
+					</div>
+					
+				</a>
+				<a href="#" class="hot_note">
+					<img src="{$smarty.const.HOME_IMG_PATH}pic.jpg" />
+					<div class="hot_city">丽江</div>
+					<div class="member_box">
+						<div class="member_name">zm592565</div>
+						<div class="member_read">1096</div>
+						<div class="member_message">1096</div>
+					</div>
+					
+				</a>
+				<a href="#" class="hot_note">
+					<img src="{$smarty.const.HOME_IMG_PATH}pic.jpg" />
+					<div class="hot_city">丽江</div>
+					<div class="member_box">
+						<div class="member_name">zm592565</div>
+						<div class="member_read">1096</div>
+						<div class="member_message">1096</div>
+					</div>
+					
+				</a>
+				<a href="#" class="hot_note">
+					<img src="{$smarty.const.HOME_IMG_PATH}pic.jpg" />
+					<div class="hot_city">丽江</div>
+					<div class="member_box">
+						<div class="member_name">zm592565</div>
+						<div class="member_read">1096</div>
+						<div class="member_message">1096</div>
+					</div>
+					
+				</a>
+				<a href="#" class="hot_note">
+					<img src="{$smarty.const.HOME_IMG_PATH}pic.jpg" />
+					<div class="hot_city">丽江</div>
+					<div class="member_box">
+						<div class="member_name">zm592565</div>
+						<div class="member_read">1096</div>
+						<div class="member_message">1096</div>
+					</div>
+					
+				</a>
+				<a href="#" class="hot_note">
+					<img src="{$smarty.const.HOME_IMG_PATH}pic.jpg" />
+					<div class="hot_city">丽江</div>
+					<div class="member_box">
+						<div class="member_name">zm592565</div>
+						<div class="member_read">1096</div>
+						<div class="member_message">1096</div>
+					</div>
+					
+				</a>
+				<a href="#" class="hot_note">
+					<img src="{$smarty.const.HOME_IMG_PATH}pic.jpg" />
+					<div class="hot_city">丽江</div>
+					<div class="member_box">
+						<div class="member_name">zm592565</div>
+						<div class="member_read">1096</div>
+						<div class="member_message">1096</div>
+					</div>
+					
+				</a>
+				<a href="#" class="hot_note">
+					<img src="{$smarty.const.HOME_IMG_PATH}pic.jpg" />
+					<div class="hot_city">丽江</div>
+					<div class="member_box">
+						<div class="member_name">zm592565</div>
+						<div class="member_read">1096</div>
+						<div class="member_message">1096</div>
+					</div>
+					
+				</a>
+
+			</div>
+			
+			<div class="chose_line clearfix">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</div>
+			<a class="more f-18">更多游记</a>
+			
+		</div>
+		<!--
+        	作者：zm592565@163.com
+        	时间：2016-12-23
+        	描述：热门游记结束
+        -->
+        
+        <div class="ule_help new_line clearfix">
+        	<p class="f-26">悠乐帮</p>
+			<ul class="clearfix">
+				<li class="active">最新求助</li>
+				<li>热门求助</li>
+				<li>待回复</li>
+			</ul>
+			
+			<div class="content_box clearfix pt-10">
+				<div class="ule_box_left hui-fadein ule_box_left_active clearfix">
+
+
+
+					{if $new_ask}
+
+      						{foreach $new_ask as $value}
+      							<dl>
+									<a href='{U("Home/Usercenter/index?id={$value.memberid}")}' class="face">
+										<img src="{if $value['member_face']}{$value.member_face}{else}{$smarty.const.HOME_IMG_PATH}default.jpg{/if}" />
+										<span class="c666">
+										{if $value['member_name']}
+											{$value.member_name}
+										{else}
+											{$value.member_email}
+										{/if}
+										</span>
+										<span class="c-999">提了一个问题 - {$value.add_time}</span>
+									</a>
+									<a class="f-16 text-l pt-10 pb-5 dis_b lh-20 c-uleblue" href='{$value.showurl}' target="_blank" style="margin-bottom: 0px;">{$value.ask_title}</a>
+									<div class="text-l c-777 f-14 lh-24 text_Hm36" id="hotline_p">
+
+									{$value.ask_content}
+									</div>
+									<div class="tool_box clearfix">
+									{if $value['tags']}
+									{foreach $value['tags'] as $tag}
+										<a href='{U("Ask/searchAskTag?tag={$tag.name}")}' class="c-999">{$tag.name}</a>
+									{/foreach}
+									{/if}
+										<div class="read_message_box">
+											<div class="answer"><a href="#">{$value.ask_answer}</a>个回答</div>
+											<div class="read"><a href="#">{$value.ask_saw}</a>人浏览</div>
+										</div>
+									</div>
+								</dl>
+      						{/foreach}
+
+      					{/if}				
+					
+				</div>
+				<div class="ule_box_left hui-fadein clearfix">
+
+					{if $hot_ask}
+
+      						{foreach $hot_ask as $value}
+      							<dl>
+									<a href='{U("Home/Usercenter/index?id={$value.memberid}")}' class="face">
+										<img src="{if $value['member_face']}{$value.member_face}{else}{$smarty.const.HOME_IMG_PATH}default.jpg{/if}" />
+										<span class="c666">
+										{if $value['member_name']}
+											{$value.member_name}
+										{else}
+											{$value.member_email}
+										{/if}
+										</span>
+										<span class="c-999">提了一个问题 - {$value.add_time}</span>
+									</a>
+									<a class="f-16 text-l pt-10 pb-5 dis_b lh-20 c-uleblue" href='{$value.showurl}' target="_blank" style="margin-bottom: 0px;">{$value.ask_title}</a>
+									<div class="text-l c-777 f-14 lh-24 text_Hm36" id="hotline_p">
+
+									{$value.ask_content}
+									</div>
+									<div class="tool_box clearfix">
+									{if $value['tags']}
+									{foreach $value['tags'] as $tag}
+										<a href='{U("Ask/searchAskTag?tag={$tag.name}")}' class="c-999">{$tag.name}</a>
+									{/foreach}
+									{/if}
+										<div class="read_message_box">
+											<div class="answer"><a href="#">{$value.ask_answer}</a>个回答</div>
+											<div class="read"><a href="#">{$value.ask_saw}</a>人浏览</div>
+										</div>
+									</div>
+								</dl>
+      						{/foreach}
+
+      					{/if}
+
+				</div>
+				<div class="ule_box_left hui-fadein clearfix">
+
+					{if $backM}
+
+      						{foreach $backM as $value}
+      							<dl>
+									<a href='{U("Home/Usercenter/index?id={$value.memberid}")}' class="face">
+										<img src="{if $value['member_face']}{$value.member_face}{else}{$smarty.const.HOME_IMG_PATH}default.jpg{/if}" />
+										<span class="c666">
+										{if $value['member_name']}
+											{$value.member_name}
+										{else}
+											{$value.member_email}
+										{/if}
+										</span>
+										<span class="c-999">提了一个问题 - {$value.add_time}</span>
+									</a>
+									<a class="f-16 text-l pt-10 pb-5 dis_b lh-20 c-uleblue" href='{$value.showurl}' target="_blank" style="margin-bottom: 0px;">{$value.ask_title}</a>
+									<div class="text-l c-777 f-14 lh-24 text_Hm36" id="hotline_p">
+
+									{$value.ask_content}
+									</div>
+									<div class="tool_box clearfix">
+									{if $value['tags']}
+									{foreach $value['tags'] as $tag}
+										<a href='{U("Ask/searchAskTag?tag={$tag.name}")}' class="c-999">{$tag.name}</a>
+									{/foreach}
+									{/if}
+										<div class="read_message_box">
+											<div class="answer"><a href="#">{$value.ask_answer}</a>个回答</div>
+											<div class="read"><a href="#">{$value.ask_saw}</a>人浏览</div>
+										</div>
+									</div>
+								</dl>
+      						{/foreach}
+
+      					{/if}
+
+
+				</div>
+
+
+				<div class="ule_box_right">
+					<div class="help_reg">
+						加入悠乐帮<br/>让世界的角角落落都留下你的脚印<br/>还在等什么？
+						<div class="pt-10">
+							<a class="join_btn f-18 radius" href="{U('Home/Login/reg')}">加入悠乐</a>
+						</div>
+						<div class="lh-24 f-14 text-l pt-10">已有帐号？立即<a href="{U('Home/Login')}" style="padding-left: 3px; color: #7ceee7; text-decoration: underline;">登录</a></div>
+					</div>
+					<div class="posts">
+						<p class="f-18">悠友发帖榜<a href="{U('Home/Login/reg')}">悠乐帮招募中</a></p>
+
+						{if $top_member}
+
+							{foreach $top_member as $key=>$value}
+
+							<dl>
+
+
+								<dt {if $key == 0}class="one"{elseif $key == 1}class="two"{elseif $key == 2}class="three"{/if}>{$key+1}</dt>
+
+
+								<dd>
+									<a href='{U("Home/Usercenter/index?id={$value.id}")}'>
+										<img src="{if $value['member_face']}{$value.member_face}{else}{$smarty.const.HOME_IMG_PATH}default.jpg{/if}"/>
+									</a>
+									<a href='{U("Home/Usercenter/index?id={$value.id}")}' class="member_name">
+										{if $value['member_name']}
+										{$value.member_name}
+										{elseif $value.member_ename}
+										{$value.member_ename}
+										{else}
+										{$value.member_email}
+										{/if}
+									</a>
+									<span><strong>{$value.member_integral}</strong>分</span>
+								</dd>
+							</dl>
+
+							{/foreach}
+
+						{/if}
+
+
+
+						
+					</div>
+				</div>
+			</div>
+        	
+        </div>

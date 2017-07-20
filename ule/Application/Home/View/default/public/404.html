@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<title>悠乐地接-对不起您的页面走丢了...</title>
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="{$smarty.const.HOME_LIB_PATH}html5.js"></script>
+		<link href="{$smarty.const.HOME_CSS_PATH}H-ui/H-ui.ie.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="{$smarty.const.HOME_LIB_PATH}respond.min.js"></script>
+		<script type="text/javascript" src="{$smarty.const.HOME_LIB_PATH}PIE_IE678.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" type="text/css" href="{$smarty.const.HOME_CSS_PATH}H-ui/H-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="{$smarty.const.HOME_CSS_PATH}404.css" />
+		<!--[if IE 6]>
+		<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+		<script>DD_belatedPNG.fix('*');</script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="cloud_right"></div>
+		<div class="cloud_top"></div>
+		<div class="cloud_left"></div>
+		
+		<div class="desk">
+			<div class="error_logo"></div>
+			<div class="error_text">	
+			<p>{if isset($message)}{$message}{else}{$error}{/if}</p>
+			<a href="{U('Home/Index/index')}" class="btn btn-warning size-L radius">返回首页</a>
+			</div>
+		</div>
+		<div class="desk_leg"></div>
+		<div class="montain"></div>
+	</body>
+</html>

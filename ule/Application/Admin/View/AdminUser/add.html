@@ -1,0 +1,174 @@
+{include file="layout/header.html"}
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员管理 <span class="c-gray en">&gt;</span> 添加管理员<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+<div class="page-container">
+
+<form action="{U('AdminUser/add')}" method="post" class="form form-horizontal">
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>角色：</label>
+			<div class="formControls col-xs-6 col-sm-2"> 
+				<span class="select-box">
+				<select name="pid"  class="select" id="select1">
+				{if $group}
+					{foreach $group as $val}
+					<option value="{$val.id}">{$val.title}</option>
+					{/foreach}
+				{/if}
+				</select>
+				</span> 
+			</div>
+		</div>
+
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>帐号：</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="text" class="input-text" value="{$rs['user']}" name="user">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>密码：</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="password" class="input-text" value="{$rs['pass']}"  name="pass">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>确认密码：</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="password" class="input-text"  name="pass_enter">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">真实姓名:</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="text" class="input-text" value="{$rs['name']}"  name="name">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">E-mail:</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="text" class="input-text" value="{$rs['email']}"  name="email">
+			</div>
+		</div>
+		
+		<div class="row cl" style="display:none" id='wldiv'>
+			<label class="form-label col-xs-4 col-sm-2">物流网点：</label>
+			<div class="formControls col-xs-6 col-sm-2"> 
+				<span class="select-box">
+				<select name="outlets_id" id ="outlets_id" class="select">
+				{if $express_outlets}
+					{foreach $express_outlets as $eval}
+					<option value="{$eval.outlets_id}">{$eval.outlets_name}</option>
+					{/foreach}
+				{/if}
+				</select>
+				</span> 
+			</div>
+		</div>
+		
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button class="btn btn-primary radius" type="button" id="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
+				<a class="btn btn-default radius" href="{U('AdminUser/userlist')}">&nbsp;&nbsp;取消&nbsp;&nbsp;</a>
+			</div>
+		</div>
+	</form>
+	</div>
+
+	{include file="layout/commonfooterjs.html"}
+
+	<script type="text/javascript">
+	$(function(){
+		$("#select1").change(function(){  
+			var pids = $(this).val();
+			if(pids==4){
+				$('#wldiv').show();
+			}else{
+				$('#wldiv').hide();
+			}
+		});
+
+		
+	});
+
+
+	$(function(){
+
+		$('#submit').click(function(){
+
+			var groupid=$("#select1  option:selected").val();
+			var user=$('input[name="user"]').val();
+			var pass=$('input[name="pass"]').val();
+			var pass_enter=$('input[name="pass_enter"]').val();
+			var name=$('input[name="name"]').val();
+			var email=$('input[name="email"]').val();
+			var url="{U('AdminUser/add')}";
+			var returnUrl="{U('AdminUser/userlist')}";
+			var outlets_id=$("#outlets_id  option:selected").val();
+		    var telReg = !!email.match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/);
+			if(user==''||pass==''||pass_enter==''){
+				layer.alert('内容填写不完整,请补充填写!')
+				return false;
+			}
+
+			if (pass!=pass_enter) {
+				layer.alert('密码与确认密码不一致!')
+				return false;
+			}
+			if(telReg==false){
+			
+				layer.alert('请填写正确的邮箱!')
+				return false;
+			}
+			$.post(url,
+				{
+					groupid:groupid,
+					user:user,
+					pass:pass,
+					pass_enter:pass_enter,
+					name:name,
+					email:email,
+					outlets_id:outlets_id
+				},
+			{literal}
+	          function(data){
+	         	console.log(data); //  2pm
+	         	if (data.state=="1") {
+					layer.confirm(data.message, {
+						  btn: ['继续添加','返回列表'] //按钮
+						}, function(){
+						  window.location.href=url;
+						}, function(){
+						   window.location.href=returnUrl;
+					});
+
+	         	}else{
+	         		
+	         		layer.confirm(data.message, {
+						  btn: ['继续添加','返回列表'] //按钮
+						}, function(){
+						  window.location.href=url;
+						}, function(){
+						   window.location.href=returnUrl;
+					});
+
+
+	         	}
+
+	        });
+
+	       
+
+		})
+
+		
+
+	})
+
+
+	{/literal}
+	</script>
+</body>
+</html>

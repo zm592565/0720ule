@@ -1,0 +1,55 @@
+<link rel="stylesheet" type="text/css" href="{$smarty.const.COMMON_CSS_PATH}page.css">
+<div class="ulehelp_box-gray line_top_line">
+    		<div class="box_1200 clearfix">
+    			<ul class="order_line">
+    				<li><a {if $order=='start_time'||$order==''}class="active"{/if} href="{U('Home/Line/index?order=time')}">默认排序</a><span class="pipe">|</span></li>
+    				<li><a {if $order=='view'}class="active"{/if} href="{U('Home/Line/index?order=read')}">浏览最多</a></li>
+    			</ul>
+    			<div class="f-r all_line">共<span class="pl-5 pr-5 c-orange">{$count}</span>个线路</div>
+    		</div>
+      		<div class="box_1200 new_line clearfix pb-20">
+
+      			{if $list}
+
+					{foreach $list as $line}
+						<dl>
+						<a href='{U("Home/Line/showLine?id={$line.id}")}'>
+							<dt>
+								<div class="line_thumb">
+									<img src="{$line.thumb}" />
+								</div>
+								<div class="line_map">
+								{if $line.cityname}
+								{$line.cityname}
+								{elseif $line.provincename}
+								{$line.provincename}
+								{else}
+								{$line.countryname}
+								{/if}
+								</div>
+								<img class="user" src="{if $face=json_decode($line['member_face'],true)}{$face['small']}{else}
+								{$smarty.const.HOME_IMG_PATH}default.jpg{/if}" />
+							</dt>
+							<dd>
+								<div class="hot_line_title">{msubstr($line.title,0,30,'utf-8',true)}</div>
+								<div class="line_price">
+									<em>{$line.price_last}</em>元起
+									<div class="fly_time">
+									{date('Y/m/d',$line['start_time'])} 出发</div>
+								</div>
+							</dd>
+							</a>
+						</dl>
+					{/foreach}
+
+					{else}
+
+					<p>暂无数据</p>
+
+					{/if}
+
+	      	</div>
+	      	<div class="box_1200 clearfix pb-20">
+				<div class="pagination">{$page}</div>
+			</div>
+   		</div>

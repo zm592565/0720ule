@@ -1,0 +1,111 @@
+@charset "utf-8";
+/*
+ * 项目名称：悠乐地接header
+ * 开发时间：2016.11.27
+ * 开发人：344822559@qq.com
+ * */
+
+/*首页top*/
+#top{
+	background: #eee;
+	height: 35px;
+	overflow: hidden;
+}
+.header_top_box{
+	width: 1200px;
+	line-height: 35px;
+	margin: 0 auto;	
+	text-align: left;
+	color: #666;
+	position: relative;
+}
+.top_box{
+	width: 1200px;
+	line-height: 35px;
+	margin: 0 auto;	
+	text-align: left;
+	color: #666;
+	position: relative;
+	display: none;
+}
+
+.top_box_active{
+	display: block;
+}
+#top .header_top_box ul{
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0px;
+	text-align: right;
+	height: 35px;
+}
+#top .header_top_box ul li{
+	display: inline;
+	padding-left: 6px;
+	padding-right: 7px;
+	border-right: 1px solid #ddd;
+}
+#top .header_top_box ul li a{
+	padding: 0px;
+	margin: 0px;
+}
+#top .header_top_box ul li:last-child{
+	padding-right: 0px;
+	border-right: none;
+}
+
+/*导航栏*/
+.nav{
+	height: 100px;
+}
+.nav .logo{
+	width: 161px;
+	height: 34px;
+	display: block;
+	float: left;
+	margin-top: 33px;
+	background: url(../img/top_logo.jpg) no-repeat left center;
+}
+.nav .menu{
+	padding-left: 100px;
+	height: 100px;
+	float: left;
+	border: none;
+}
+.nav .menu a{
+	line-height: 100px;
+	border: none;
+	padding: 0px 30px;
+	font-size: 16px;
+}
+.nav .menu a:hover{
+	color: #30c1b8;
+}
+.nav .btn_write{
+	width: 150px;
+	height: 34px;
+	float: right;
+	background: #47cdc5;
+	border: 1px solid #3ec1b9;
+	border-radius: 17px;
+	-moz-border-radius: 17px;
+	-webkit-border-radius: 17px;
+	text-align: center;
+	color: white;
+	margin-top: 33px;
+	display: block;
+}
+.nav .btn_write:hover{
+	text-decoration: none;
+	background: #4bd7cf;
+	border: 1px solid #48d0c8;
+}
+
+#header{
+	background: white;
+	/*box-shadow: 1px 2px 2px #000;*/
+	width:100%;
+	z-index: 10000;
+	top: 0px;
+}

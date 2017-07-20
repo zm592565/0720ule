@@ -1,0 +1,88 @@
+{include file="layout/header.html"}
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 权限管理 <span class="c-gray en">&gt;</span> 添加权限<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+<div class="page-container">
+
+<form action="{U('AdminRole/add')}" method="post" class="form form-horizontal">
+        <input type="hidden" name="pid" value="{$pid}">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>权限名：</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="text" class="input-text" value="" name="title">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>权限：</label>
+			<div class="formControls col-xs-8 col-sm-3">
+				<input type="text" class="input-text" value=""  name="name"> 输入模块/控制器/方法即可 例如 Admin/Rule/index
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button class="btn btn-primary radius" type="button" id="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
+				<a class="btn btn-default radius" href="{U('AdminRole/index')}">&nbsp;&nbsp;取消&nbsp;&nbsp;</a>
+			</div>
+		</div>
+	</form>
+	</div>
+
+	{include file="layout/commonfooterjs.html"}
+	<script type="text/javascript">
+	$(function(){
+
+		$('#submit').click(function(){
+            var url="{U('AdminRole/add')}";
+            var returnUrl="{U('AdminRole/index')}";
+			var title=$('input[name="title"]').val();
+			var name=$('input[name="name"]').val();
+            var pid=$('input[name="pid"]').val();
+			if(title==''||name==''){
+				layer.alert('内容填写不完整,请补充填写!')
+				return false;
+			}
+			$.post(url,
+				{
+                    pid:pid,
+                    title:title,
+                    name:name
+				},
+			{literal}
+	          function(data){
+	         	console.log(data); //  2pm
+	         	if (data.state=="1") {
+					layer.confirm(data.message, {
+						  btn: ['继续添加','返回列表'] //按钮
+						}, function(){
+						  window.location.href=url;
+						}, function(){
+						   window.location.href=returnUrl;
+					});
+
+	         	}else{
+	         		layer.confirm(data.message, {
+						  btn: ['继续添加','返回列表'] //按钮
+						}, function(){
+						  window.location.href=url;
+						}, function(){
+						   window.location.href=returnUrl;
+					});
+
+
+	         	}
+
+	        });
+
+	       
+
+		})
+
+		
+
+	})
+
+
+	{/literal}
+	</script>
+</body>
+</html>

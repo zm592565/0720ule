@@ -1,0 +1,221 @@
+<link rel="stylesheet" type="text/css" href="{$smarty.const.COMMON_CSS_PATH}/page.css">
+<script type="text/javascript">
+	var loginIS="{session('userid')}";
+	var addUrl="{U('Home/Ask/addAsk')}";
+	var loginUrl="{U('login/index')}";
+	var focusURL="{U('Home/Ask/focusAsk')}";
+	var add_answer="{U('Home/Ask/addAnswer')}";
+	var askAnswerAdd="{U('Home/Ask/askAnswerAdd')}";
+</script>
+<div class="box_ulehelp">
+
+		<div class="ask_sub">
+			<form action="{U('Home/Ask/searchAsk')}" method="get">
+				<input placeholder="发布求助前请先搜索，该问题之前是否已经发布过！" name="title" type="text"  id="search_v" class="input-text radius" />
+				<button type="submit" id="search_btn" class="btn btn-warning radius ml-10">搜索答案</button>
+		
+			{if U('Home/Ask/checkUser')}
+			<button type="button" id="send_help" class="btn btn-success radius ml-10">发布求助</button>
+			{else}
+			<a href="{U('Home/Login/index')}" class="btn btn-success radius ml-10">发布求助</a>
+			{/if}
+			</form>
+			
+		</div>
+</div>
+      	<div class="ulehelp_box-gray">
+      		<div class="box_1200 clearfix pt-20 pb-20">
+      			
+      			<nav class="breadcrumb c-999 f-12" style="border: none;"><a class="c-uleblue" href="{U('Home/Index/index')}">首页</a><span class="c-999 en">&gt;</span><a class="c-uleblue" href="{U('Home/Ask/index')}">悠乐帮</a><span class="c-999 en">&gt;</span>{$content.ask_title}</nav>
+      			<div class="left_help">
+
+      				<div class="ask_show_box">
+
+
+
+      					<div class="pt-20 pl-20 pr-20 pb-20">
+      						<p class="f-20 pt-10">{$content.ask_title}</p>
+      						<div class="user_link">
+      							<a href='{U("Home/Usercenter/index?id={$user.id}")}' class="">
+      								<img src="{if $face}{$face}{else}{$smarty.const.HOME_IMG_PATH}default.jpg{/if}"/>
+      							</a>
+      							<a href='{U("Home/Usercenter/index?id={$user.id}")}' class="c-888">
+      							{if $user['member_name']}
+									{$user.member_name}
+								{else}
+									{$user.member_email}
+								{/if}
+      							</a>
+      							<span class="c-999 pl-10">发表于 {$content.ask_add|date_format:"Y/m/d H:i:s"}</span>
+      						</div>
+      						<div class="pt-20 c-777 f-15 lh-30 pb-20">
+      							{htmlspecialchars_decode($content.ask_content)}
+      						</div>
+      						<div class="clearfix tags_ask">
+      						{if $tags}
+	      						{foreach $tags as $value}
+	      							<a href="{U("Ask/searchAskTag?tag={$value.name}")}">{$value.name}</a>
+	      						{/foreach}
+      						{/if}
+      						</div>
+  							<div class="tool_ask_show">
+								<div class="answer"><a href="#">{$content.ask_answer}</a>个回答</div>
+								<div class="read"><a href="#">{$content.ask_saw}</a>人浏览</div>
+								<div class="f-r">
+									<button id="ask" class="btn size-M btn-success">回答问题</button>
+									{if $haslogin}
+										<button class="btn size-M {if $hasfocus}disabled {else} btn-secondary{/if}" id="focus" type="button" name="{$content.id}">{if $hasfocus}已关注{else}关注问题{/if}</button>			
+									{else}
+									<a class="btn size-M btn-secondary" href="{U('Home/Login/index')}">关注问题</a>
+									{/if}
+
+								</div>
+							</div>
+      					</div>
+      					<div class="line mb-20"></div>
+
+
+
+
+      					{if $hasAnswer}
+
+      					{foreach $hasAnswer as $value}
+
+      					<div class="pl-20 pb-20">
+      						<div class="ask_cimmit">
+      							<div class="support">{$value.support}</div>
+      							<div class="cimmit_user_link f-12 mb-20">
+	      							<a href="#" class="">
+	      							<img src="{if $value['member_face']}{$value.member_face}{else}{$smarty.const.HOME_IMG_PATH}default.jpg{/if}"/>
+	      							</a>
+	      							<a href="{$value.member_id}" class="c-888 f-15">
+	      							{if $value.member_name}
+	      							{$value.member_name}
+	      							{else}
+	      							{$value.member_email}
+	      							{/if}
+	      							</a>
+	      							<span class="c-999 pl-10">发表于 {$value.addtime}</span>
+	      						</div>
+      							<div class="pr-20 c-777 f-15 pb-20 lh-30">
+	      							{$value.content}
+	      						</div>
+	      						<div class="mb-20 clearfix">
+	      							<div class="add_ask f-l">对他说</div>
+	      							<div class="do_report f-r">举报</div>
+	      							<div class="clearfix"></div>
+	      							<div class="ask_add_answer pt-10 pb-10 pl-10 pr-10 clearfix mt-10" {if $value.childAnswer}style="display:block"{/if}>
+	      							{if $value.childAnswer} 
+	      							{foreach $value.childAnswer as $child}
+	      							<div class="answer_list clearfix">
+	      								<img class="face" src="{if $child['member_face']}{$child.member_face}{else}{$smarty.const.HOME_IMG_PATH}default.jpg{/if}">
+	      								<div class="child_box">
+	      								<a href="" class="f-l f-12 lh-24 c-uleblue">
+	      									{if $child.member_name}{$child.member_name}{else}{$child.member_email}{/if}
+	      								</a>
+	      								<div class="f-r f-12 lh-24 c-999">
+	      									<a href="javascript:;" class="callBack" data={$child.id} name="{if $child.member_name}{$child.member_name}{else}{$child.member_email}{/if}">回复</a>
+	      									<span class="pipe">|</span>
+	      									<a href="javascript:;" name="{$child.member_id}" date="{$child.id}" class="Toreport">举报</a>
+	      								</div>
+	      								<div class="clearfix"></div>
+	      								<div class="clearfix f-14">
+	      									{$child.content}
+	      								</div>
+	      								<div class="c-999 f-12 pt-10">{$child.addtime}</div>
+	      								</div>
+	      							</div>
+	      							{/foreach}
+	      							{/if}
+	      								<input type="hidden" name="pid" value="{$value.id}" class="askpid">
+	      								<input type="text" value="" placeholder="添加回复" style="font-size: 12px;" class="input-text add_send"></input>
+	      								<div class="text-l f-l text_num"><span>0</span>/500 字</div>
+	      								<button type="button" class="btn size-M mt-10 btn-secondary f-r add_ask_answer">发布</button>
+	      							</div>
+	      						</div>
+	      						<div class="border-b"></div>
+      						</div>
+      					</div>
+      					{/foreach}
+      					{/if}
+
+
+
+      					<div id="answer_box" class="pr-20 pb-20" style="padding-left: 80px;">
+  							<script id="editor" name="content" type="text/plain" style="width:100%;height:200px;"></script>
+  							<div class="clearfix pt-10">
+  							{if $haslogin}
+  								<button type="button" class="btn btn-secondary size-M f-r" id="add_answer" value="{$content.id}">回复提问</button>
+  							{else}
+  								<a href="{U('Home/Login/index')}" class="btn btn-secondary size-M f-r">回复提问</a>
+  							{/if}
+
+  							<span class="lh-30 f-l">最多允许<cite class="c-orange">10000</cite>个字符</span>
+  							</div>
+  						</div>
+      					
+      					
+      				</div>
+      				
+      			</div>
+      			
+      			<div class="right_help">
+      				
+      				<div class="ule_box_right">
+					<div class="help_reg" style="margin-top: 0px">
+						加入悠乐帮<br/>让世界的角角落落都留下你的脚印<br/>还在等什么？
+						<div class="pt-10">
+							<a class="join_btn f-18 radius" target="_blank" href="{U('Login/reg')}">加入悠乐</a>
+						</div>
+						<div class="lh-24 f-14 text-l pt-10">已有帐号？立即<a target="_blank" href="{U('Login/index')}" style="padding-left: 3px; color: #7ceee7; text-decoration: underline;">登录</a></div>
+					</div>
+					<div class="posts">
+						<p class="f-18">悠友发帖榜<a  target="_blank" href="{U('Login/reg')}">悠乐帮招募中</a></p>
+
+						{if $top_member}
+
+							{foreach $top_member as $key=>$value}
+
+							<dl>
+
+
+								<dt {if $key == 0}class="one"{elseif $key == 1}class="two"{elseif $key == 2}class="three"{/if}>{$key+1}</dt>
+
+
+								<dd>
+									<a href="#">
+										<img src="{if $value['member_face']}{$value.member_face}{else}{$smarty.const.HOME_IMG_PATH}default.jpg{/if}"/>
+									</a>
+									<a href="#" class="member_name">
+										{if $value['member_name']}
+										{$value.member_name}
+										{else}
+										{$value.member_email}
+										{/if}
+									</a>
+									<span><strong>{$value.member_integral}</strong>分</span>
+								</dd>
+							</dl>
+
+							{/foreach}
+
+						{/if}
+
+						
+					</div>
+				</div>
+      			</div>
+      			
+      			
+      			
+      			
+      		</div>
+      		
+      	</div>
+      	<script type="text/javascript" src="{$smarty.const.UEDITOR_PATH}ueditor/1.4.3/ueditor.config_home.js"></script>
+		<script type="text/javascript" src="{$smarty.const.UEDITOR_PATH}ueditor/1.4.3/ueditor.all.min.js"> </script>
+		<script type="text/javascript" src="{$smarty.const.UEDITOR_PATH}ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+
+
+
+		

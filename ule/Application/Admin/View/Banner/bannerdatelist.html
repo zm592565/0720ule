@@ -1,0 +1,84 @@
+{include file="layout/header.html"}
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 广告条管理 <span class="c-gray en">&gt;</span> 内容列表<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+
+<div class="page-container">
+
+	<form name="myform" method="post">
+	<input type="hidden" name="pid" value="{$id}">
+	<div class="cl pd-5 bk-gray" style="border-bottom:none"><a href="{$addBtn}" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加广告</a></span> <span class="r">共有数据：<strong>{$count}</strong> 条</span> </div>
+	<table class="table table-border table-bordered table-bg table-hover">
+		<thead>
+			<tr>
+				<th scope="col" colspan="11">{$bclass}列表</th>
+			</tr>
+			<tr class="text-c">
+				<th width="40">ID</th>
+				<th>广告名</th>
+				<th>广告信息</th>
+				<th>排序</th>
+				<th>是否导航显示</th>
+				<th>添加时间</th>
+				<th width="100">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		{if $rs}
+		{foreach $rs as $value}
+			<tr class="text-c">
+				<td>{$value.id}</td>
+				<td>{$value.banner_name}</td>
+				<td>{$value.banner_info}</td>
+				<td><input type="text" class="input-text text-c" style="width: 100px" name="sort[{$value.id}]" value="{$value.sort}"></td>
+				<td class="td-status">{if $value['is_show']==1}<span class="label label-success radius">已显示</span>{else}<span class="label label-error radius">未显示</span>{/if}</td>
+				<td>{date('Y/m/d',$value['time'])}</td>
+				<td class="td-manage">
+				<!-- <a title="编辑" href="#" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>  -->
+				<a title="删除" href="{$value.del}" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+				</td>
+			</tr>		
+		{/foreach}
+
+		<tr class="active">
+			<td colspan="7">
+				<input type="submit" onclick="paixu()" value="排序" class="btn">
+			</td>
+		</tr>
+		{else}
+			<tr class="text-c">
+			<td colspan="7">暂无数据...</td>
+			</tr>
+		{/if}
+		</tbody>	
+	</table>
+	</form>
+	<div class="pagination" style="margin-top:20px">{$page}</div>
+</div>
+
+{include file="layout/commonfooterjs.html"}
+<script type="text/javascript">
+
+$(function(){
+
+	
+    $("#check_bottom_all").on("click" , function(){
+			
+		$("table tbody tr>td #check_all").prop("checked",$(this).prop("checked"));   	
+
+    });
+
+})
+
+
+function paixu() {
+	document.myform.action="{U('Banner/sort')}";  
+}
+
+</script>
+	
+
+
+
+</body>
+</html

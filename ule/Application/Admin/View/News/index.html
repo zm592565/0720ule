@@ -1,0 +1,111 @@
+{include file="layout/header.html"}
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 资讯管理 <span class="c-gray en">&gt;</span> 资讯列表<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+	<table class="table">
+		<tr>
+			<td width="200"  class="va-t">
+				<ul id="treeDemo" class="ztree">
+				</ul>	
+
+			</td>
+			<td class="va-t" style="padding:0px;padding-right:8px">
+			<IFRAME ID="testIframe" Name="testIframe" FRAMEBORDER=0 SCROLLING=AUTO width=100% SRC="{U('News/page_wel')}"></IFRAME>
+			</td>
+		</tr>
+	</table>
+
+{include file="layout/commonfooterjs.html"}
+
+<script type="text/javascript">		
+		$(function(){
+			
+
+			var t = $("#treeDemo");
+			t = $.fn.zTree.init(t, setting, zNodes);
+
+			var a=$(window).height()-40-8;
+
+			$('.table').css('height',a+'px');
+			$("body", parent.document).height();
+
+			$("#testIframe").css('height',a+'px');
+			
+			
+			//alert(a+'body的高度')
+
+			demoIframe = $("#testIframe");
+			var zTree = $.fn.zTree.getZTreeObj("tree");
+
+		});
+		//checkbox的方法
+		function check_box(id){
+			var checkid="#"+id;  
+			if($(checkid).is(":checked")){
+				$('input[name="is_comment"]').val('1');
+		    }else{  
+		    	$('input[name="is_comment"]').val('0');
+		    }  
+
+		}
+
+
+
+		var setting = {
+				view: {
+					dblClickExpand: true,
+					showLine: false,
+					selectedMulti: false,
+					showLine: true,
+					expandSpeed : "fast",
+				},
+				data: {
+					simpleData: {
+						enable:true,
+						idKey: "id",
+						pIdKey: "pId",
+						rootPId: ""
+					}
+				},
+				callback: {
+
+
+					beforeClick: function(treeId, treeNode) {
+						var zTree = $.fn.zTree.getZTreeObj("tree");
+
+						if (treeNode.isParent) {
+							zTree.expandNode(treeNode);
+							return false;
+						} else {
+							demoIframe.attr("src",zNodes.url);
+							return true;
+						}
+					}
+				}
+			};
+
+			var zNodes =[
+
+				{if $rs}
+
+					{foreach $rs as $value}
+
+						{$value}
+
+
+					{/foreach}
+
+				{/if}
+
+			];
+					
+			var code;
+					
+			function showCode(str) {
+				if (!code) code = $("#code");
+				code.empty();
+				code.append("<li>"+str+"</li>");
+			}
+	</script>
+</body>
+</html

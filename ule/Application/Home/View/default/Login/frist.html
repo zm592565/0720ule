@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<title>悠乐-感谢一路有你。</title>
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="lib/html5.js"></script>
+		<link href="css/H-ui/H-ui.ie.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="lib/respond.min.js"></script>
+		<script type="text/javascript" src="lib/PIE_IE678.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" type="text/css" href="{$smarty.const.HOME_CSS_PATH}H-ui/H-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="{$smarty.const.HOME_CSS_PATH}frist.css" />
+		<script type="text/javascript" src="{$smarty.const.COMMON_JS_PATH}jquery-1.11.2.min.js" ></script>
+		<script type="text/javascript" src="{$smarty.const.HOME_LIB_PATH}layer/layer.js" ></script>
+		{$css}
+		{$js}
+
+		<script type="text/javascript">
+			regUrl="{U('Login/reg')}";
+			checkRegEmail="{U('Login/checkReg_Email')}";
+			checkFrist="{U('Login/RegFrist')}";
+		</script>
+		<!--[if IE 6]>
+		<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+		<script>DD_belatedPNG.fix('*');</script>
+		<![endif]-->
+		{literal}
+		<style type="text/css">
+			body .reg-class .layui-layer-title{background:#c00; color:#fff; border: none;}
+			body .reg-class .layui-layer-btn{border-top:1px solid #E9E7E7}
+			body .reg-class .layui-layer-btn a{background:#333;}
+			body .reg-class .layui-layer-btn .layui-layer-btn1{background:#999;}
+			body .reg-class .layui-layer-content{padding: 20px;line-height: 24px;color: #666;text-align: left;}
+		</style>
+		{/literal}
+	</head>
+	<body>
+		
+		<div class="text_title f-18 c-666 text-c pt-30">悠乐地接平台欢迎您</div>
+		<div class="f-16 text-c website-show">小悠都是拥有真实地接资质的助游人员。</br>所以，需要您确认一些简单的细节信息去</br>激活您的账号。</div>
+		<a href="{U('Home/Login/UpfaceImg')}" class="next_btn">下一步</a>
+		
+	</body>
+</html>

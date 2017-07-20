@@ -1,0 +1,480 @@
+@charset "utf-8";
+/*
+ * 项目名称：个人主页
+ * 开发时间：2016.11.27
+ * 开发人：344822559@qq.com
+ * */
+
+.user_detail{
+	width: 380px;
+	padding-bottom: 40px;
+	/*height: 600px;*/
+	float: left;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	background: white;
+	box-shadow: 0px 0px 30px #eee;
+	-webkit-box-shadow: 0px 0px 30px #eee;
+	position: relative;
+}
+
+.user_face{
+	border: 5px solid #fff;
+	border-radius: 50%;
+	height: 100px;
+	width: 100px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	position: absolute;
+	left: 50%;
+	margin-left: -55px;
+	top: -55px;
+	overflow: hidden;
+}
+.user_face img{
+	width: 100px;
+	height: 100px;
+}
+.user_name{
+	font-size: 22px;
+	color: #666;
+	text-align: center;
+	padding-top: 60px;
+}
+.user_line{
+	height: 2px;
+	background: #eee;
+	width: 40px;
+	margin: 5px auto 10px auto;
+}
+.user_map{
+	text-align: center;
+	font-size: 14px;
+	height: 24px;
+	line-height: 24px;
+	color: #666;
+}
+
+.user_info{
+	padding: 0px 40px;
+	padding-top: 10px;
+	font-size: 16px;
+	text-align: left;
+	text-indent: 32px;
+	line-height: 32px;
+}
+.foucs_box{
+	width: 299px;
+	height: 50px;
+	padding-top: 20px;
+	margin: 0 auto;
+	margin-bottom: 30px;
+}
+.foucs_box dl{
+	float: left;
+	width: 149px;
+	height: 50px;
+	border-right: 1px dotted #eee;
+	text-align: center;
+}
+.foucs_box dl:last-child{
+	border-right: none;
+}
+.foucs_box dl dt{
+	text-align: center;
+	font-size: 13px;
+	color: #999;
+}
+.foucs_box dl dd{
+	line-height: 35px;
+	font-size: 16px;
+	color: #666;
+}
+.send_message{
+	height: 45px;
+	width: 212px;
+	background: #2dc7e8;
+	display: block;
+	margin: 0px auto;
+	margin-top: 20px;
+	border:none;
+	border-radius: 23px;
+	-moz-border-radius: 23px;
+	-webkit-border-radius: 23px;
+	box-shadow: 0px 10px 20px #88e9fe;
+	-webkit-box-shadow: 0px 10px 20px #88e9fe;
+	font-size: 18px;
+	color: white;
+	
+}
+
+
+.add_focus{
+	height: 45px;
+	width: 212px;
+	background: #fe821e;
+	display: block;
+	margin: 0px auto;
+	border:none;
+	border-radius: 23px;
+	-moz-border-radius: 23px;
+	-webkit-border-radius: 23px;
+	box-shadow: 0px 10px 20px #ffe0ca;
+	-webkit-box-shadow: 0px 10px 20px #ffe0ca;
+	font-size: 18px;
+	color: white;
+	cursor: pointer;
+}
+
+.disabled{
+	background: #999;
+}
+.user_list{
+	width: 800px;
+	float: right;
+}
+.list_box{
+	min-height: 500px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	background: white;
+	box-shadow: 0px 0px 30px #eee;
+	-webkit-box-shadow: 0px 0px 30px #eee;
+	overflow: hidden;
+	position: relative;
+	padding-bottom: 10px;
+}
+
+.user_line_title{
+	line-height: 50px;
+	font-size: 16px;
+	color: #666;
+	padding: 0px 20px;
+	border-bottom: 1px solid #eee;
+	position: relative;
+}
+.user_line_title a{
+	display: block;
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+.user_line_title cite{
+	position: absolute;
+	height: 50px;
+	right: 20px;
+	top: 0px;
+	font-size: 12px;
+	line-height: 50px;
+}
+
+.feedback_textarea{
+	display: block;
+	width: 740px;
+	margin: 20px auto 10px 20px;
+	height: 84px;
+	background: #fdfdfd;
+	border: 1px solid #eee;
+	outline: none;
+	-webkit-box-shadow: inset 0 3px 3px #efefef;  
+	-moz-box-shadow: inset 0 3px 3px #efefef;  
+	box-shadow: inset 0 3px 3px #efefef;
+	overflow: hidden;
+	font-size: 14px;
+	padding: 8px;
+}
+
+
+.line_dl_box{
+	padding-left: 20px;
+}
+.line_dl_box dl{
+	float: left;
+	margin-right: 20px;
+	width: 240px;
+	height: 143px;
+	background: #eee;
+	position: relative;
+	margin-top: 20px;
+}
+
+.line_dl_box dl dt{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 2;
+}
+
+.line_dl_box dl dt img{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	display: block;
+}
+
+.line_dl_box dl dd{
+	position: absolute;
+	z-index: 3;
+}
+.line_dl_box dl dd.line_show{
+	top: 24px;
+	width: 60px;
+	height: 60px;
+	background: rgba(0,0,0,0.5);
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	text-align: center;
+	left: 50%;
+	margin-left: -30px;
+}
+
+.line_dl_box dl dd.line_show .mid_line{
+	width: 40px;
+	height: 29px;
+	border-bottom: 1px solid #ddd;
+	margin: 0 auto;
+}
+.line_dl_box dl dd.line_show .mid_line img{
+	height: 10px;
+	position: relative;
+	margin-top: 10px;
+}
+
+.line_dl_box dl dd.line_show p{
+	line-height: 24px;
+	font-family:arial;
+	font-size: 12px;
+	color: #fff;
+}
+
+.line_dl_box dl dd.line_title{
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	overflow: hidden;
+	height: 35px;
+	line-height: 35px;
+	background: rgba(0,0,0,0.3);
+	padding: 0px 10px;
+	color: #fff
+}
+
+
+
+.ule_user_help dl{
+	position: relative;
+	border-bottom: 1px dotted #eeeeee;
+	background: white;
+	clear: both;
+	margin-top: 0px;
+	padding: 15px;
+}
+
+.ule_user_help dl:last-child{
+	border-bottom: none;
+}
+
+.ule_user_help dl .face{
+	padding-left: 40px;
+	height: 32px;
+	line-height: 32px;
+	display: block;
+	position: relative;
+}
+.ule_user_help dl .face:hover{
+	text-decoration: none;
+}
+.ule_user_help dl .face img{
+	display: block;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #eee;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.ule_user_help dl .tool_box{
+	padding: 15px 0px 5px 0px;
+	clear: both;
+	min-height: 24px;
+	position: relative;
+}
+.ule_user_help dl .tool_box a{
+	background: #efefef;
+	border-radius: 15px;
+	border: 0px;
+	display: inline;
+	padding: 5px 8px;
+	margin-right: 5px;
+}
+.ule_user_help dl .tool_box a:hover{
+	background: #46ccbd;
+	text-decoration: none;
+	color: white;
+}
+
+.ule_user_help dl .tool_box .read_message_box{
+	position: absolute;
+	right: 0px;
+	top: 20px;
+	height: 25px;
+}
+
+.ule_user_help dl .tool_box .read_message_box .answer{
+	padding-left: 18px;
+	background: url(../img/icon/icon_talk.png) no-repeat left center;
+	background-size: 15px;
+	color: #777;
+	float: right;
+}
+.ule_user_help dl .tool_box .read_message_box .answer a{
+	padding: 0px;
+	background: none;
+	margin: 0px;
+	padding-right: 3px;
+}
+.ule_user_help dl .tool_box .read_message_box .answer a:hover{
+	color: #46ccbd;
+}
+
+.ule_user_help dl .tool_box .read_message_box .read{
+	padding-left: 18px;
+	background: url(../img/icon/icon_eye.png) no-repeat left center;
+	background-size: 15px;
+	color: #777;
+	float: right;
+	margin-right: 10px;
+}
+.ule_user_help dl .tool_box .read_message_box .read a{
+	padding: 0px;
+	background: none;
+	margin: 0px;
+	padding-right: 3px;
+}
+.ule_user_help dl .tool_box .read_message_box .read a:hover{
+	color: #46ccbd;
+}
+
+
+.user_commit{
+	padding: 0px 20px;
+}
+.user_commit dl{
+	border-bottom: 1px dotted #eee;
+	padding-bottom: 10px;
+	position: relative;
+}
+.user_commit dl dd{
+	position: relative;
+	height: 50px;
+	padding-left: 50px;
+	padding-top: 10px;
+}
+.user_commit dl dd div.userpage_face{
+	position: absolute;
+	left: 0px;
+	top: 10px;
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+}
+.user_commit dl dd div.userpage_face img{
+	display: block;
+	width: 40px;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+}
+.user_commit dl dd a{
+	line-height: 40px;
+	text-decoration: none;
+	color: #333;
+}
+.user_commit dl dd span{
+	line-height: 40px;
+	color: #999;
+	padding-left: 10px;
+}
+
+.user_commit dl dt{
+	font-size: 14px;
+	padding: 0px;
+	line-height: 22px;
+}
+
+.user_commit dl:last-child{
+	border-bottom: none;
+}
+
+.add_ask{
+	height: 20px;
+    line-height: 20px;
+    background: url(../img/icon/icon_add_message.png) no-repeat left center;
+    background-size: auto 70%;
+    padding-left: 20px;
+    cursor: pointer;
+}
+.do_report{
+	height: 20px;
+    line-height: 20px;
+    background: url(../img/icon/icon_report.png) no-repeat left center;
+    background-size: auto 70%;
+    padding-left: 20px;
+    color: #999;
+    cursor: pointer;
+}
+
+.do_report:hover{
+	color: #46ccbd;
+}
+
+.ask_add_answer{
+	clear: both;
+    min-height: 36px;
+    background: #fafafa;
+    position: relative;
+}
+.ask_add_answer textarea{
+	height: 30px;
+}
+.text_num{
+	line-height: 31px;
+	padding-top: 10px;
+}
+.answer_list{
+	position: relative;
+    padding: 10px 0px;
+    padding-left: 60px;
+    min-height: 60px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+.answer_list img.face{
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+	border-radius: 50%;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+.child_box{
+	padding: 0px;
+	margin: 0px;
+}
+.height_50{
+	height: 50px;
+}
+.height_40{
+	height: 40px;
+}

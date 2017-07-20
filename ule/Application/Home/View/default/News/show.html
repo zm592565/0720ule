@@ -1,0 +1,20 @@
+	{$header}
+
+	<div class="list_banner">
+		<div class="list_banner_p content">
+			<p>新闻资讯</p>
+			<div class="bread">新闻/动态 > {$rs['title']|truncate:30:"...":true}</div>
+		</div>
+	</div>
+	
+	
+	<div class="show content clearfix">
+		<p>{$rs['title']}</p>
+		<div class="show_ex">来源：{if $rs['copyfrom']}{$rs['copyfrom']} {else}<a href="{$rs['link']}">{$rs['name']}</a>{/if}发表日期：{date('Y/m/d',$rs['time'])}</div>
+		<div class="show_content">
+			{$rs['content']}
+		</div>
+		
+	</div>
+
+	{$footer}

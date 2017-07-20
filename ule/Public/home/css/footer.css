@@ -1,0 +1,98 @@
+@charset "utf-8";
+#footer{
+	background: #5f5f5f;
+	padding: 55px 0px 50px 0px;
+}
+#footer ul{
+	display: block;
+	width: 1200px;
+	margin: 0 auto;
+	height: 100px;
+	/*background: red;*/
+}
+#footer ul li{
+	display: block;
+	float: left;
+	color: #969696;
+	font-size: 14px;
+	background: url(../img/footer_line.jpg) repeat-y right;
+}
+#footer ul li.footer_logo{
+	padding-top: 31px;
+	width: 345px;
+	height: 63px;
+}
+#footer ul li.footer_logo img{
+	display: block;
+	float: left;
+	height: 37px;
+}
+#footer ul li.footer_logo .company_text{
+	float: left;
+	text-align: left;
+	margin-left: 10px;
+}
+#footer ul li.company_show{
+	padding-left: 30px;
+	height: 97px;
+}
+#footer ul li.company_show p{
+	color: #bcbbbb;
+	font-size: 18px;
+	padding-bottom: 8px;
+	text-align: left;
+}
+#footer ul li.company_show div.show_text{
+	text-align: left;
+	font-size: 12px;
+	padding-right: 20px;
+}
+#footer ul li.company_show p.p_img{
+	display: block;
+	margin: 0px;
+	padding-bottom: 0px;
+	color: #969696;
+}
+#footer ul li.company_show p.hot_text{
+	font-size: 12px;
+	color: #969696;
+	padding: 0px;
+	padding-bottom: 0px;
+}
+#rss{
+	height: 45px;
+	background: #4f4f4f;
+}
+#rss .rss_box{
+	width: 1200px;
+	margin: 0px auto;
+	height: 45px;
+	line-height: 45px;
+	overflow: hidden;
+}
+#rss .rss_box ul{
+	display: inline-block;
+	text-align: left;
+	float: left;
+}
+#rss .rss_box ul li{
+	display: inline;
+	text-align: left;
+}
+#rss .rss_box ul li a{
+	font-size: 12px;
+	display: block;
+	float: left;
+	padding: 0px 5px;
+	color: #858383;
+	line-height: 15px;
+	height: 15px;
+	text-decoration: none;
+	margin: 15px 0px;
+	border-right: 1px solid #858383;
+}
+#rss .rss_box span{
+	float: right;
+	color: #858383;
+	font-size: 12px;
+}

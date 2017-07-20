@@ -1,0 +1,78 @@
+{include file="layout/header.html"}
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 评论留言 <span class="c-gray en">&gt;</span> 留言管理<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+<div class="page-container">
+	<form action="{U('Class/command')}" method="post">
+	<table class="table table-border table-bordered table-bg table-hover">
+		<thead>
+			<tr>
+				<th scope="col" colspan="11">留言列表</th>
+			</tr>
+			<tr class="text-c">
+				<th>ID</th>
+				<th>发表评论人</th>
+				<th>评论内容</th>
+				<th>点赞数</th>
+				<th>状态</th>
+				<th>添加时间</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		{if $feedback_list}
+		{foreach $feedback_list as $value}
+			<tr class="text-c">
+				<td>{$value.id}</td>
+				<td>{$value.member_name}</td>
+				<td>{$value.message_info}</td>
+				<td>{$value.admire}</td>
+				<td>{if $value.state}<a href='{U("FeedBack/updateMessageState?id={$value['id']}&state={$value['state']}")}' class="label label-success radius">显示中</a>{else}<a href='{U("FeedBack/updateMessageState?id={$value['id']}&state={$value['state']}")}' class="label label-error radius">隐藏中</a>{/if}</td>
+				<td>{date('Y-m-d H:i:s',$value['add_time'])}</td>
+				<td class="td-manage">
+					<!--<a title="编辑" href="{U('FeedBack/update')}?id={$value.id}" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>-->
+					<a title="删除" href="javascript:;" onclick="delOne('{$value.id}',$(this))" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+				</td>
+			</tr>
+		{/foreach}
+		{else}
+			<tr class="text-c">
+			<td colspan="10">暂无数据...</td>
+			</tr>
+		{/if}
+		</tbody>
+	</table>
+	</form>
+	<div class="pagination" style="margin-top:20px">{$page}</div>
+</div>
+
+{include file="layout/commonfooterjs.html"}
+
+<script type="text/javascript" >
+	function delOne(id,ob){
+		layer.confirm('确定删除？', function(index){
+			//do something
+				var data = { 'id':id };
+				$.ajax({
+					url: "{U('Admin/FeedBack/delOne')}",
+					type: "post",
+					data: data,
+					dataType: "json",
+					success:function(result){
+						if(result.state == 1){
+							layer.msg(result.info, { icon: 1 });
+							ob.parent().parent().remove();
+						}else{
+							layer.msg(result.info, { icon: 2 });
+						}
+					},
+					error:function(re){
+						alert(JSON.stringify(re));
+					}
+				});
+			layer.close(index);
+		});
+	}
+</script>
+</body>
+</html

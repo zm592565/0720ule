@@ -1,0 +1,81 @@
+{include file="layout/header.html"}
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 会员管理 <span class="c-gray en">&gt;</span> 会员列表<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+
+<div class="page-container">
+
+	<form method="post" name="myform">
+	<div class="cl pd-5 bk-gray" style="border-bottom:none"><a href="{U('Member/addMember')}" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加会员</a></span> <span class="r">共有数据：<strong>{$count}</strong> 条</span> </div>
+	<table class="table table-border table-bordered table-bg table-hover">
+		<thead>
+			<tr>
+				<th scope="col" colspan="11">会员列表</th>
+			</tr>
+			<tr class="text-c">
+				<th width="40">ID</th>
+				<th>邮箱</th>
+				<th>手机</th>
+				<th>注册日期</th>
+				<th>来源</th>
+				<th>状态</th>
+				<th>用户识别码</th>
+				<th width="100">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		{if $member}
+		{foreach $member as $value}
+			<tr class="text-c">
+				<td>{$value.id}</td>
+				<td>{if $value['member_email']}{$value.member_email}{else}暂无{/if}</td>
+				<td>{if $value['member_phone']}{$value.member_phone}{else}暂无{/if}</td>
+				<td>{date('Y-m-d',$value['member_reg_day'])}</td>
+				<td>{if $value['member_from']==1}后台添加{else}用户注册{/if}</td>
+				<td class="td-status">{if $value['member_state']==1}<a href='{U("Member/updateMemberState?id={$value['id']}&state={$value['member_state']}")}' class="label label-success radius">正常</a>{else}<a href='{U("Member/updateMemberState?id={$value['id']}&state={$value['member_state']}")}' class="label label-error radius">已冻结</a>{/if}</td>
+				<td>{$value.member_code}</td>
+				<td class="td-manage">
+				<a title="修改密码" href='{U("Member/updatePass?id={$value['id']}")}' class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> 
+				<a title="删除" href='{U("Member/delUser?id={$value['id']}")}' class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+				</td>
+			</tr>		 
+		{/foreach}
+		{else}
+			<tr class="text-c">
+			<td colspan="10">暂无数据...</td>
+			</tr>
+		{/if}
+		</tbody>	
+	</table>
+	</form>
+	<div class="pagination" style="margin-top:20px">{$page}</div>
+</div>
+
+{include file="layout/commonfooterjs.html"}
+<script type="text/javascript">
+
+$(function(){
+    $("#check_bottom_all").on("click" , function(){
+			
+		$("table tbody tr>td #check_all").prop("checked",$(this).prop("checked"));   	
+
+    });
+
+})
+
+
+function paixu() {
+	document.myform.action="{U('Class/sort')}";  
+}
+function del(){
+	document.myform.action="{U('Class/del')}";  
+}
+
+
+</script>
+	
+
+
+
+</body>
+</html

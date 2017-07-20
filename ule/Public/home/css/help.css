@@ -1,0 +1,59 @@
+@charset "utf-8";
+/*
+ * 项目名称：帮助页面
+ * 开发时间：2016.11.27
+ * 开发人：344822559@qq.com
+ * */
+.help_menu{
+	width: 248px;
+	border: 1px solid #eee;
+	float: left;
+	margin-bottom: 50px;
+}
+.help_menu p{
+	line-height: 50px;
+	text-align: left;
+	padding-left: 20px;
+	font-size: 16px;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 0px;
+}
+.help_menu ul{
+	display: block;
+}
+.help_menu ul li{
+	border-bottom: 1px dotted #eee;
+	line-height: 40px;
+	padding-left: 20px;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.help_menu ul li:hover{
+	background: #F5F5F5;
+}
+.help_menu ul li.active{
+	background: #F5F5F5;
+}
+
+.help_menu ul li:last-child{
+	border-bottom: none;
+}
+.help_content{
+	float: right;
+	width: 928px;
+	border: 1px solid #eee;
+}
+.help_content p{
+	line-height: 50px;
+	text-align: left;
+	padding-left: 20px;
+	font-size: 16px;
+	border-bottom: 1px solid #eee;
+}
+.content p{
+	border:none;
+	margin: 0px;
+	line-height: 18px;
+	font-size: 14px;
+}

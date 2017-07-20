@@ -1,0 +1,145 @@
+{include file="layout/header.html"}
+<body>
+<div class="page-container" style="padding:0px">
+		<div class="cl pd-5 bk-gray" style="border:none">
+		<a href="javascript:;" onclick="article_add('添加资讯','{U('News/add')}?id={$id}')" target="_blank" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加资讯</a></span> 
+	
+		<span class="r">
+			<form action="" method="post">
+				<span class="l" style="padding-right: 10px;">
+				<span class="select-box" style="width: 150px;">
+					<select name="class_type" class="select" id="select2">
+						<option value="0" {if $rs['class_type']==0}selected="selected"{/if}>列表栏目</option>
+						<option value="1" {if $rs['class_type']==1}selected="selected"{/if}>单页栏目</option>
+					</select>
+				</span>
+				</span>
+				 <span class="r">
+				 	<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 检索</button>
+				 </span>
+			</form>
+		</span> 
+	</div>
+	<form method="post" name="myform">
+	<table class="table table-border table-bordered table-bg table-hover">
+		<input type="hidden" name="pid" value="{$id}">
+		<thead>
+			<tr>
+				<th scope="col" colspan="11">资讯列表</th>
+			</tr>
+			<tr class="text-c">
+				<th width="25"><input type="checkbox" id="check_all"></th>
+				<th width="40">ID</th>
+				<th width="150">标题</th>
+				<th width="90">所属类</th>
+				<th width="100">来源</th>
+				<th>摘要</th>
+				<th width="50">排序</th>
+				<th width="80">是否允许评论</th>
+				<th width="130">添加时间</th>
+				<th>阅读量</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		{if $news}
+		{foreach $news as $value}
+			<tr class="text-c">
+				<td><input type="checkbox" value="{$value.id}" name="id[]"></td>
+				<td>{$value.id}</td>
+				<td title="{$value.title}">{$value.title|truncate:20:"...":true}</td>
+				<td>{$value.class_name}</td>
+				<td>{if $value['copyfrom']}{$value.copyfrom}{else}{$value.name}{/if}</td>
+				<td>{$value.digest|truncate:20:"...":true}</td>
+				<td><input type="text" name="sort[{$value.id}]" value="{$value.sort}" class="input-text"></td>
+				<td class="td-status">{if $value['is_comment']==1}<span class="label label-success radius">允许</span>{else}<span class="label label-error radius">禁止</span>{/if}</td>
+				<td>{date('Y-m-d H:i:s',$value['time'])}</td>
+				<td>{$value.count}</td>
+				<td class="td-manage">
+				<a title="编辑" href="{U('News/update')}?id={$value.id}" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> 
+				<a title="删除" href="{U('News/delone')}?id={$value.id}" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+				</td>
+			</tr>		
+		{/foreach}
+			<tr class="active">
+				<td colspan="11">
+					<input type="submit" onclick="paixu()" value="排序" class="btn">
+					<input type="submit" onclick="del()" value="批量删除" class="btn">
+				</td>
+			</tr>
+		{else}
+			<tr class="text-c">
+			<td colspan="11">暂无数据...</td>
+			</tr>
+		{/if}
+		</tbody>
+	</table>
+	</form>
+	<div class="pagination" style="margin-top:20px">{$page}</div>
+	
+</div>
+
+{include file="layout/commonfooterjs.html"}
+
+<script type="text/javascript">		
+		$(function(){
+			
+			var a=$(window.parent.document.body).height();
+			$("#testIframe").attr('height',a-140);
+			
+			demoIframe = $("#testIframe");
+
+		});
+		//checkbox的方法
+		function check_box(id){
+			var checkid="#"+id;  
+			if($(checkid).is(":checked")){
+				$('input[name="is_comment"]').val('1');
+		    }else{  
+		    	$('input[name="is_comment"]').val('0');
+		    }  
+
+		}
+
+		function article_add(title,url){
+			var index = layer.open({
+				type: 2,
+				title: title,
+				content: url
+			});
+			layer.full(index);
+		}
+
+			function picture_add(title,url){
+				var index = layer.open({
+					type: 2,
+					title: title,
+					content: url
+				});
+				layer.full(index);
+			}
+
+			function product_add(title,url){
+				var index = layer.open({
+					type: 2,
+					title: title,
+					content: url
+				});
+				layer.full(index);
+			}
+
+			function member_add(title,url,w,h){
+				layer_show(title,url,w,h);
+			}
+
+
+			function paixu() {
+				document.myform.action="{U('News/sort')}";  
+			}
+			function del(){
+				document.myform.action="{U('News/del')}";  
+			}
+
+	</script>
+</body>
+</html

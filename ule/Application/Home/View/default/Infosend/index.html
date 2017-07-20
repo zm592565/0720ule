@@ -1,0 +1,339 @@
+<link rel="stylesheet" type="text/css" href="{$smarty.const.HOME_COMMON_CSS}H-ui.tags.css"/>
+<link rel="stylesheet" type="text/css" href="{$smarty.const.HOME_COMMON_CSS}Hui-iconfont_v1.0.8/iconfont.css"/>
+<script type="text/javascript" src="{$smarty.const.HOME_JS_PATH}askAdd_infoSend.js"></script>
+ <script type="text/javascript">
+	var getBack="{U('Infosend/getCountryBack')}";
+	var laterMonth="{$latemonth}";
+	var latertaday="{$taday}";
+	var coverthumb="{U('Infosend/coverImg','width=285&height=170&floder=thumb')}"
+	var addLinesSend="{U('Infosend/addLines')}";
+	var addPost="{U('Home/Ask/addAsk')}";
+	var IndexPage="{U('Home/Index/index')}";
+</script>
+
+<style type="text/css">
+/*冲突tags*/
+.Hui-tags-token {
+    color: #aaa;
+    float: left;
+    font-size: 12px;
+    height: 50px;
+    line-height: 50px;
+    margin-right: 8px;
+    padding: 0 1px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.Hui-tags-input{
+	height: 50px;
+	line-height: 50px;
+}
+.Hui-tags-label{
+	height: 50px;
+	line-height: 50px;
+}
+.Hui-tags-icon{
+	line-height: 38px;
+}
+</style>
+
+ <div class="show_banner send_banner_bj"></div>
+      	<div class="send_info_box">
+      		<div class="send_title">
+      			<i>1</i>选择您的发布类别
+      		</div>
+      		<ul class="chose_nav">
+      			<li class="active">地接线路</li>
+      			<li>晒行程</li>
+      			<!-- <li>搭伴游</li> -->
+      			<li>悠乐帮</li>
+      		</ul>
+      		<div class="info_box info_block hui-fadeinR">
+      		<form class="layui-form" action="">
+      			<div class="send_title">
+	      			<i>2</i>线路标题
+	      		</div>
+	      		<div class="layui-form-item clearfix">
+				     <input type="text" name="title" id="linestitle" lay-verify="title" autocomplete="off" placeholder="线路标题要可以突出重点,简明扼要，最好字数在20至200字内..." class="layui-input">
+				</div>
+      			
+      			<div class="send_title">
+	      			<i>3</i>上传一张封面图,让发布的文章更吸引眼球
+	      		</div>
+	      		<form id="uploadForm" method="post" enctype="multipart/form-data">
+	      		<div class="send_thumb_box">
+	      			<div class="defult_box">
+	      			</div>
+	      			<input type="hidden" name="lines_thumb" id="lines_thumb">
+	      			<div class="defult_text lh-28 c-999">
+	      				1、封面图片尺寸为285*170像素或者相同比例<br />
+						2、上传图片不得大于200kb<br />
+						3、图片格式仅限jpg、png、gif<br />
+						4、最好保证图片质量以及清晰度<br />
+						<div class="upload_thumb_btn">
+							<button type="button" class="btn btn-default radius btn-block size-L mt-10">选择上传图片</button>
+							<input type="file" accept="image/png,image/jpg,image/png,image/gif,image/jpeg" name="file_face" id="file_face" onchange="uploadInfoThumb();" class="input-file">
+						</div>
+	      			</div>
+	      		</div>
+	      		</form>
+	      		<div class="send_title">
+	      			<i>4</i>请选择行程天数以及报价
+	      		</div>
+	      		<div class="layui-form-item clearfix">
+	      			<div class="f-l " style="width: 310px;">		
+						<input type="text" name="date" style="height: 50px" class="input-text radius" id="startEnddate" readonly="true"  placeholder="选择行程开始以及结束日期" />
+	      			</div>
+	      			<div class="f-r" style="width: 310px;">
+	      				<input type="number" style="height: 50px;width: 100%" class="input-text radius input-block" id="money" autoComplete='off' placeholder="输入我的收费(RMB)" />
+	      			</div>
+	      		</div>
+	      		<div class="send_title">
+	      			<i>5</i>集合或出发地点
+	      		</div>
+	      		<div class="layui-form-item clearfix">
+	      			<div class="f-l mr-20" style="width: 200px;">
+
+	      				<div class="select-box radius height_50">
+						  <select class="select" onchange="checkArea(this,'country')" name="selcountry" style="display: block;height: 100%;">
+						    {if $country}
+						        {foreach $country as $value}
+						        <option value="{$value.id}">{$value.name}</option>
+						        {/foreach}
+					        {/if}
+						  </select>
+						</div>
+	      			</div>
+	      			<div class="f-l mr-20" style="width: 200px;">
+	      				<div class="select-box radius height_50">
+						  <select class="select" onchange="checkArea(this,'state')" name="selstate" style="display: block;height: 100%;">
+						    {if $sheng}
+						        {foreach $sheng as $value}
+						        <option value="{$value.id}">{$value.name}</option>
+						        {/foreach}
+					        {/if}
+						  </select>
+						</div>
+	      			</div>
+	      			<div class="f-l" style="width: 200px;">
+		      			<div class="select-box radius height_50">
+		      				<select class="select" name="selcity" style="display: block;height: 100%;">
+							    {if $city}
+							        {foreach $city as $value}
+							        <option value="{$value.id}">{$value.name}</option>
+							        {/foreach}
+						        {/if}
+							 </select>
+		      			</div>
+	      			</div>
+	      		</div>
+	      		<div class="send_title">
+	      			<i>6</i>提供的服务和报价说明
+	      		</div>
+	      		<div class="layui-form-item layui-form-text clearfix" style="position: relative;">
+	      			<div class="sevice_info">
+	      				请描述你此行提供的服务：</br>
+	      				比如：提供轿车(200RMB/天)，</br>
+	      				翻译(免费)...
+	      			</div>
+	      			<textarea class="layui-textarea text-l" id="service_textarea" placeholder=""></textarea>
+	      		</div>
+	      		<div class="send_title">
+	      			<i>7</i>线路规划详情
+	      		</div>
+	      		<div class="clearfix">
+	      		<script id="Lineeditor" name="content" type="text/plain" style="width:100%;height:250px;"></script>
+	      		</div>
+	      		<div class="clearfix pt-20">
+	      			<button type="button" class="add_info" id="addLines">发布地接线路</button>
+	      		</div>
+	      	</form>
+      		</div>
+      		<div class="info_box hui-fadeinR">2</div>
+      		
+      		<!-- 悠乐帮 -->
+      		<div class="info_box hui-fadeinR">
+
+					<div class="send_title">
+		      			<i>2</i>标题
+		      		</div>
+		      		<div class="layui-form-item clearfix">
+					     <input type="text"  id="addtitle" autocomplete="off" placeholder="标题要可以突出重点,简明扼要，最好字数在5至50字内..." class="layui-input">
+					</div>
+					<div class="send_title">
+		      			<i>3</i>详细描述
+		      		</div>
+		      		<div class="layui-form-item clearfix">
+					    <script id="editor" name="content" type="text/plain" style="width:100%;height:200px;"></script>
+					</div>
+					<div class="send_title">
+		      			<i>4</i>添加标签
+		      		</div>
+		      		<div class="layui-form-item clearfix">
+					   <div class="Hui-tags layui-input radius">
+							<div class="Hui-tags-editor cl">
+								<i class="Hui-tags-icon Hui-iconfont">&#xe64b;</i>
+								<span class="Hui-tags-token">地接社</span>
+								<div class="Hui-tags-iptwrap">
+									<input type="text" class="Hui-tags-input" maxlength="20" value="">
+									<label class="Hui-tags-label">添加相关标签，用空格或回车分隔</label>
+								</div>
+							</div>
+							<input type="hidden" class="Hui-tags-val" id="tags" value="地接,地接社,悠乐地接,">
+						</div>
+					</div>
+
+					<button type="button" class="add_info" id="subAdd">发布悠乐帮</button>
+      		</div>
+
+
+      	</div>
+      	<script type="text/javascript" src="{$smarty.const.UEDITOR_PATH}ueditor/1.4.3/ueditor.config_home.js"></script>
+		<script type="text/javascript" src="{$smarty.const.UEDITOR_PATH}ueditor/1.4.3/ueditor.all.min.js"> </script>
+		<script type="text/javascript" src="{$smarty.const.UEDITOR_PATH}ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+		<script type="text/javascript">
+
+	var time1;
+	$(".Hui-tags-lable").show();
+	$(".Hui-tags-input").val("");
+
+
+		$(document).on("blur",".Hui-tags-input",function(){ 
+			/*在这里也要判断是否限制标签数*/
+			var isOver=checkTags(4);
+			if (isOver) {
+				return false;
+			}
+			set_tag_val(this);
+			time1 = setTimeout(function(){
+			$(this).parents(".Hui-tags").find(".Hui-tags-list").slideUp(); 
+			}, 400);
+		});
+
+		function set_tag_val(obj){ 
+			var v = $(obj).val().replace(/\s+/g, "");
+			var reg=/^,|,$/gi;
+			v=v.replace(reg,"");
+			v=$.trim(v);
+			vLenth=v.length;
+
+			if (vLenth>=6) {
+				layer.msg('标签的字数不得超过5!');
+				$('.Hui-tags-iptwrap .Hui-tags-input').val('');
+				return false;
+
+			}
+
+			if(v!=''){
+				$('<span class="Hui-tags-token">'+v+'</span>').insertBefore($(obj).parents(".Hui-tags").find(".Hui-tags-iptwrap"));
+				$(obj).val("");
+				gettagval(obj);
+			}
+		}
+			$(document).on("keydown",".Hui-tags-input",function(event){
+				$(this).next().hide(); 
+
+				if(event.keyCode==13||event.keyCode==108||event.keyCode==32){ 
+					/*在这里也要判断是否限制标签数*/
+					var isOver=checkTags(4);
+					if (isOver) {
+						layer.msg('最多可以设置5个标签！');
+						return false;
+					}
+					set_tag_val(this);
+				} 
+				if(event.keyCode==8){
+					if($.trim($(this).val()) == ''){
+						var token =$(this).parents(".Hui-tags").find(".Hui-tags-token"); 
+						if(token.length>=1){
+							$(this).parents(".Hui-tags").find(".Hui-tags-token:last").remove();
+							gettagval(this);
+						}else{
+							$(this).parents(".Hui-tags").find(".Hui-tags-lable").show();
+							return false;
+						}
+					}
+				} 
+		});
+
+
+	$(document).on("focus",".Hui-tags-input",function(){
+
+		var isOver=checkTags(4);
+		if (isOver) {
+			return false;
+		}
+		clearTimeout(time1);
+	});
+	$(document).on("click",".Hui-tags-input",function(){
+		$(this).find(".Hui-tags-input").focus();
+		$(this).find(".Hui-tags-list").slideDown();
+	});
+
+	function gettagval(obj){
+		var str ="";
+		var token =$(obj).parents(".Hui-tags").find(".Hui-tags-token");
+		//alert(token.length)
+		if(token.length<1){
+			$(obj).parents(".Hui-tags").find(".Hui-tags-val").val("");
+			return false;
+		}
+		for(var i = 0;i< token.length;i++){
+			str += token.eq(i).text() + ",";
+			$(obj).parents(".Hui-tags").find(".Hui-tags-val").val(str);
+		}
+	}
+
+	
+	$(document).on("click",".Hui-tags-has span",function(){
+		var taghasV = $(this).text();
+		taghasV=taghasV.replace(/(^\s*)|(\s*$)/g,"");
+		$('<span class="Hui-tags-token">'+taghasV+'</span>').insertBefore($(this).parents(".Hui-tags").find(".Hui-tags-iptwrap"));
+		gettagval(this);
+		$(this).parents(".Hui-tags").find(".Hui-tags-input").focus();
+	});
+
+	$(document).on("click",".Hui-tags-token",function(){
+		var token =$(this).parents(".Hui-tags").find(".Hui-tags-token");
+		var it = $(this).parents(".Hui-tags");
+		$(this).remove();
+		switch(token.length){
+			case 1 : it.find(".Hui-tags-lable").show();
+			break;
+		}
+		var str ="";
+		var token =it.find(".Hui-tags-token");
+		//alert(token.length)
+		if(token.length<1){
+			it.find(".Hui-tags-val").val("");
+			return false;
+		}
+		for(var i = 0;i< token.length;i++){
+			str += token.eq(i).text() + ",";
+			it.find(".Hui-tags-val").val(str);
+		}		
+	});
+
+
+
+	function checkTags(num){
+
+			var TagSize=$('.Hui-tags > .Hui-tags-editor > .Hui-tags-token').size();
+			if (TagSize>num) {
+				$('.Hui-tags-iptwrap .Hui-tags-input').val('');
+				return true;
+			}else{
+				return false;
+			}
+
+		}
+
+
+		$(function(){
+			var ue = UE.getEditor('editor',{
+				autoHeight: false
+			});
+		});
+
+
+	</script>
